@@ -72,28 +72,29 @@ class FirstPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: screenHeight / 64),
-              RichText(
-                text: const TextSpan(
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    Constants.firstPageText4,
+                    style: TextStyle(
+                      fontFamily: "Barlow",
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: Constants.firstPageText4,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/second");
+                    },
+                    child: const Text(
+                      Constants.firstPageText5,
                       style: TextStyle(
                         fontFamily: "Barlow",
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
-                    TextSpan(
-                      text: Constants.firstPageText5,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Barlow",
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

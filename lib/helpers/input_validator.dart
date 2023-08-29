@@ -18,12 +18,14 @@ class InputValidation {
 
   static bool passwordValidatonToast(String password) {
     bool isPasswordCorrect = false;
-    if (password.length < 8) {
-      isPasswordCorrect = true;
-      Fluttertoast.showToast(
-          msg: "Your password is too short", toastLength: Toast.LENGTH_SHORT);
-    } else {
+    if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
+        .hasMatch(password)) {
       isPasswordCorrect = false;
+      Fluttertoast.showToast(
+          msg: "Your password is not in the correct format",
+          toastLength: Toast.LENGTH_SHORT);
+    } else {
+      isPasswordCorrect = true;
     }
     return isPasswordCorrect;
   }

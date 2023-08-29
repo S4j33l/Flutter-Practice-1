@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internship_application_1/constants/constants.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
@@ -128,11 +129,15 @@ class ThirdPage extends StatelessWidget {
                       isNameCorrect = true;
                     }
                     if (isEmailCorrect && isPasswordCorrect && isNameCorrect) {
-                      Navigator.of(context).pushNamed("/third");
+                      Navigator.of(context).pushNamed("/first");
+                      Fluttertoast.showToast(
+                          msg: "Successfully validated",
+                          gravity: ToastGravity.TOP);
                     }
+                    Navigator.of(context).pushNamed("/first");
                   },
                   child: const Text(
-                    Constants.secondPageText4,
+                    Constants.thirdPageText3,
                     style: TextStyle(
                       fontFamily: "Barlow",
                       fontWeight: FontWeight.bold,
@@ -142,35 +147,34 @@ class ThirdPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: screenHeight / 36),
-              Center(
-                child: RichText(
-                  text: const TextSpan(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    Constants.secondPageText6,
                     style: TextStyle(
-                      fontSize: 14.0,
-                      color: Colors.black,
+                      fontFamily: "Barlow",
+                      fontWeight: FontWeight.w500,
                     ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: Constants.secondPageText5,
-                        style: TextStyle(
-                          fontFamily: "Barlow",
-                        ),
-                      ),
-                      TextSpan(
-                        text: Constants.thirdPageText3,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Barlow",
-                        ),
-                      ),
-                    ],
                   ),
-                ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/second");
+                    },
+                    child: const Text(
+                      Constants.thirdPageText4,
+                      style: TextStyle(
+                        fontFamily: "Barlow",
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: screenHeight / 24),
               const Center(
                 child: Text(
-                  Constants.secondPageText7,
+                  Constants.secondPageText8,
                   style: TextStyle(
                     fontFamily: "Barlow",
                   ),

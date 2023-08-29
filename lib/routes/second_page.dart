@@ -99,18 +99,19 @@ class SecondPage extends StatelessWidget {
                   ),
                   onPressed: () {
                     if (InputValidation.emailValidatonToast(
-                        emailController.text) == true)  {
+                        emailController.text))  {
                       print(emailController.text);
                       isEmailCorrect = true;
                     }
                     if (InputValidation.passwordValidatonToast(
-                        passwordController.text) == true) {
+                        passwordController.text)) {
                       print(passwordController.text);
                       isPasswordCorrect = true;
                     }
                     if (isEmailCorrect && isPasswordCorrect){
                       Navigator.of(context).pushNamed("/third");
                     }
+                    Navigator.of(context).pushNamed("/third");
                   },
                   child: const Text(
                     Constants.secondPageText4,
@@ -122,35 +123,34 @@ class SecondPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: screenHeight / 42),
-              Center(
-                child: RichText(
-                  text: const TextSpan(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    Constants.secondPageText5,
                     style: TextStyle(
-                      fontSize: 14.0,
-                      color: Colors.black,
+                      fontFamily: "Barlow",
+                      fontWeight: FontWeight.w500,
                     ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: Constants.secondPageText5,
-                        style: TextStyle(
-                          fontFamily: "Barlow",
-                        ),
-                      ),
-                      TextSpan(
-                        text: Constants.secondPageText6,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Barlow",
-                        ),
-                      ),
-                    ],
                   ),
-                ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/third");
+                    },
+                    child: const Text(
+                      Constants.secondPageText7,
+                      style: TextStyle(
+                        fontFamily: "Barlow",
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: screenHeight / 36),
               const Center(
                 child: Text(
-                  Constants.secondPageText7,
+                  Constants.secondPageText8,
                   style: TextStyle(
                     fontSize: 12.0,
                     fontFamily: "Barlow",
