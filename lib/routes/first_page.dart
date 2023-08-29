@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internship_application_1/constants/constants.dart';
 
 class FirstPage extends StatelessWidget {
@@ -7,34 +8,44 @@ class FirstPage extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         margin: const EdgeInsets.all(5.0),
         color: Colors.white,
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              const Image(image: AssetImage("assets/images/ship's helm.png")),
+              SizedBox(height: screenHeight / 5),
+              const Image(
+                height: 250,
+                width: 250,
+                image: AssetImage("assets/images/ship's helm.png"),
+              ),
+              SizedBox(height: screenHeight / 24),
               const Text(
                 Constants.firstPageText1,
                 style: TextStyle(
-                  fontFamily: "Barlow",
-                  fontSize: 36.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue
+                    fontFamily: "Barlow",
+                    fontSize: 36.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+              SizedBox(height: screenHeight / 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 65.0),
+                child: Text(
+                  Constants.firstPageText2,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: "Barlow",
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
               ),
-              const Text(
-                Constants.firstPageText2,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: "Barlow",
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
+              SizedBox(height: screenHeight / 24),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
@@ -45,15 +56,22 @@ class FirstPage extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamed("/second");
+                  Fluttertoast.showToast(
+                    msg: "You're on the second page now!",
+                    toastLength: Toast.LENGTH_SHORT,
+                    fontSize: 16.0,
+                    gravity: ToastGravity.BOTTOM,
+                  );
                 },
                 child: const Text(
                   Constants.firstPageText3,
                   style: TextStyle(
-                    fontFamily: "Barlow",
-                    fontWeight: FontWeight.bold,
-                  ),
-                  ),
+                      fontFamily: "Barlow",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0),
+                ),
               ),
+              SizedBox(height: screenHeight / 64),
               RichText(
                 text: const TextSpan(
                   style: TextStyle(
@@ -65,7 +83,6 @@ class FirstPage extends StatelessWidget {
                       text: Constants.firstPageText4,
                       style: TextStyle(
                         fontFamily: "Barlow",
-                        
                       ),
                     ),
                     TextSpan(
