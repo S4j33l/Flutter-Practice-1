@@ -93,15 +93,8 @@ class ThirdPage extends StatelessWidget {
                   obscureText: true,
                 ),
               ),
-              SizedBox(height: screenHeight / 64),
-              const Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(Constants.secondPageText3),
-                ),
-              ),
-              SizedBox(height: screenHeight / 24),
+              // SizedBox(height: screenHeight / 64),
+              SizedBox(height: screenHeight / 36),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17.0),
                 child: ElevatedButton(
@@ -113,28 +106,27 @@ class ThirdPage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
+                    if (InputValidation.nameValidatonToast(
+                        nameController.text)) {
+                      print(nameController.text);
+                      isNameCorrect = true;
+                    }
                     if (InputValidation.emailValidatonToast(
                         emailController.text)) {
                       print(emailController.text);
                       isEmailCorrect = true;
                     }
                     if (InputValidation.passwordValidatonToast(
-                        passwordController.text)) {
+                        passwordController.text, isEmailCorrect)) {
                       print(passwordController.text);
                       isPasswordCorrect = true;
-                    }
-                    if (InputValidation.nameValidatonToast(
-                        nameController.text)) {
-                      print(nameController.text);
-                      isNameCorrect = true;
                     }
                     if (isEmailCorrect && isPasswordCorrect && isNameCorrect) {
                       Navigator.of(context).pushNamed("/first");
                       Fluttertoast.showToast(
-                          msg: "Successfully validated",
-                          gravity: ToastGravity.TOP);
+                        msg: "Successfully validated",
+                      );
                     }
-                    Navigator.of(context).pushNamed("/first");
                   },
                   child: const Text(
                     Constants.thirdPageText3,

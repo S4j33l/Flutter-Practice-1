@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internship_application_1/constants/constants.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
@@ -57,7 +58,12 @@ class SecondPage extends StatelessWidget {
                 child: TextField(
                   controller: emailController,
                   decoration: const InputDecoration(
+                    errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
                     border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     label: Text("Email"),
@@ -70,7 +76,12 @@ class SecondPage extends StatelessWidget {
                 child: TextField(
                   controller: passwordController,
                   decoration: const InputDecoration(
+                    errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
                     border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     label: Text("Password"),
@@ -79,11 +90,14 @@ class SecondPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: screenHeight / 64),
-              const Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(Constants.secondPageText3),
+              GestureDetector(
+                onTap: () => showForgotPasswordDialog(context),
+                child: const Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(Constants.secondPageText3),
+                  ),
                 ),
               ),
               SizedBox(height: screenHeight / 24),
@@ -99,19 +113,19 @@ class SecondPage extends StatelessWidget {
                   ),
                   onPressed: () {
                     if (InputValidation.emailValidatonToast(
-                        emailController.text))  {
+                        emailController.text)) {
                       print(emailController.text);
                       isEmailCorrect = true;
                     }
                     if (InputValidation.passwordValidatonToast(
-                        passwordController.text)) {
+                        passwordController.text, isEmailCorrect)) {
                       print(passwordController.text);
                       isPasswordCorrect = true;
                     }
-                    if (isEmailCorrect && isPasswordCorrect){
+                    if (isEmailCorrect && isPasswordCorrect) {
                       Navigator.of(context).pushNamed("/third");
+                      Fluttertoast.showToast(msg: "Successfully logged in!");
                     }
-                    Navigator.of(context).pushNamed("/third");
                   },
                   child: const Text(
                     Constants.secondPageText4,
@@ -178,5 +192,43 @@ class SecondPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void showForgotPasswordDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.lightBlue[50],
+              title: const Text("Forgot Password?"),
+              content: SizedBox(
+                height: 171.0,
+                child: Column(
+                  children: <Widget>[
+                    const TextField(
+                      decoration: InputDecoration(
+                        hintText: "Enter new password...",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 5.0),
+                    const TextField(
+                      decoration: InputDecoration(
+                          hintText: "Confirm new password...",
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                          )),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: ElevatedButton(
+                          onPressed: () {}, child: const Text("Confirm")),
+                    )
+                  ],
+                ),
+              ),
+            ));
   }
 }

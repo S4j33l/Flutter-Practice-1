@@ -6,24 +6,26 @@ class InputValidation {
     if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email)) {
-      isEmailCorrect = false;
       Fluttertoast.showToast(
           msg: "Your email is not in the correct format",
           toastLength: Toast.LENGTH_SHORT);
+      isEmailCorrect = false;
     } else {
       isEmailCorrect = true;
     }
     return isEmailCorrect;
   }
 
-  static bool passwordValidatonToast(String password) {
+  static bool passwordValidatonToast(String password, bool isEmailCorrect) {
     bool isPasswordCorrect = false;
     if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
         .hasMatch(password)) {
-      isPasswordCorrect = false;
-      Fluttertoast.showToast(
-          msg: "Your password is not in the correct format",
-          toastLength: Toast.LENGTH_SHORT);
+      if (isEmailCorrect) {
+        Fluttertoast.showToast(
+            msg: "Your password is not in the correct format",
+            toastLength: Toast.LENGTH_SHORT);
+        isPasswordCorrect = false;
+      }
     } else {
       isPasswordCorrect = true;
     }
@@ -33,10 +35,10 @@ class InputValidation {
   static bool nameValidatonToast(String name) {
     bool isNameCorrect = false;
     if (RegExp(r'\d').hasMatch(name)) {
-      isNameCorrect = false;
       Fluttertoast.showToast(
           msg: "Your name should not contain numbers",
           toastLength: Toast.LENGTH_SHORT);
+      isNameCorrect = false;
     } else {
       isNameCorrect = true;
     }
