@@ -64,6 +64,11 @@ class _ThirdPageState extends State<ThirdPage> {
                   color: Colors.black,
                 ),
               ),
+              SizedBox(height: screenHeight / 48),
+              const CircleAvatar(
+                radius: 260.0,
+                backgroundImage: AssetImage("assets/images/default.jpg"),
+              ),
               SizedBox(height: screenHeight / 24),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
@@ -172,30 +177,18 @@ class _ThirdPageState extends State<ThirdPage> {
                     ),
                   ),
                   DropdownButton<String>(
-                    icon: const Icon(Icons.menu),
+                      icon: const Icon(Icons.menu),
                       hint: const Text("Select your country"),
                       value: dropdownValue,
                       items: const [
                         DropdownMenuItem(
-                          value: "Russia",
-                          child: Text("Russia")
-                          ),
+                            value: "Russia", child: Text("Russia")),
+                        DropdownMenuItem(value: "Spain", child: Text("Spain")),
+                        DropdownMenuItem(value: "Japan", child: Text("Japan")),
                         DropdownMenuItem(
-                          value: "Spain",
-                          child: Text("Spain")
-                          ),
+                            value: "Indonesia", child: Text("Indonesia")),
                         DropdownMenuItem(
-                          value: "Japan",
-                          child: Text("Japan"))
-                          ,
-                        DropdownMenuItem(
-                          value: "Indonesia",
-                          child: Text("Indonesia")
-                            ),
-                        DropdownMenuItem(
-                          value: "Turkey",
-                          child: Text("Turkey")
-                          ),
+                            value: "Turkey", child: Text("Turkey")),
                       ],
                       onChanged: (value) {
                         setState(() {
