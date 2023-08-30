@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:internship_application_1/constants/constants.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
@@ -14,6 +17,7 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
+  File? imageFile;
   int radioButtonValue = -1;
   bool? selectedRecipeIsBiryani = false;
   bool? selectedRecipeIsNehari = false;
@@ -65,9 +69,15 @@ class _ThirdPageState extends State<ThirdPage> {
                 ),
               ),
               SizedBox(height: screenHeight / 48),
-              const CircleAvatar(
-                radius: 260.0,
-                backgroundImage: AssetImage("assets/images/default.jpg"),
+              GestureDetector(
+                onTap: () => getImage(source: ImageSource.gallery),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: CircleAvatar(
+                    radius: 60.0,
+                    backgroundImage: imageFile != null? FileImage(imageFile!) : null,
+                  ),
+                ),
               ),
               SizedBox(height: screenHeight / 24),
               Padding(
@@ -297,5 +307,13 @@ class _ThirdPageState extends State<ThirdPage> {
         ),
       ),
     );
+  }
+  void getImage ({required ImageSource source}) async{
+    final file = await ImagePicker().pickImage(source: source);
+    if(file?.path != null){
+      setState(() {
+        imageFile = File(file!.path);
+      });
+    }
   }
 }
