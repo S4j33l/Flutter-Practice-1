@@ -198,7 +198,7 @@ class SecondPage extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          backgroundColor: Colors.lightBlue[50],
+              backgroundColor: Colors.lightBlue[50],
               title: const Text("Forgot Password?"),
               content: SizedBox(
                 height: 171.0,

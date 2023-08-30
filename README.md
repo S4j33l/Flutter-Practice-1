@@ -1,6 +1,6 @@
 # internship_application_1
 
-A new Flutter project.
+Doing random shi at the internship.
 
 ## Getting Started
 
