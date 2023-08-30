@@ -75,7 +75,7 @@ class _ThirdPageState extends State<ThirdPage> {
                   fit: BoxFit.scaleDown,
                   child: CircleAvatar(
                     radius: 60.0,
-                    backgroundImage: imageFile != null? FileImage(imageFile!) : null,
+                    backgroundImage: imageFile != null ? FileImage(imageFile!) : const AssetImage("assets/images/default.jpg") as ImageProvider,
                   ),
                 ),
               ),
