@@ -17,6 +17,7 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
+  bool isLoggedIn = false;
   File? imageFile;
   int radioButtonValue = -1;
   bool? selectedRecipeIsBiryani = false;
@@ -75,7 +76,10 @@ class _ThirdPageState extends State<ThirdPage> {
                   fit: BoxFit.scaleDown,
                   child: CircleAvatar(
                     radius: 60.0,
-                    backgroundImage: imageFile != null ? FileImage(imageFile!) : const AssetImage("assets/images/default.jpg") as ImageProvider,
+                    backgroundImage: imageFile != null
+                        ? FileImage(imageFile!)
+                        : const AssetImage("assets/images/default.jpg")
+                            as ImageProvider,
                   ),
                 ),
               ),
@@ -234,13 +238,17 @@ class _ThirdPageState extends State<ThirdPage> {
                       print(passwordController.text);
                       isPasswordCorrect = true;
                     }
-                    if (isEmailCorrect && isPasswordCorrect && isNameCorrect) {
-                      Navigator.of(context).pushNamed("/first");
-                      Fluttertoast.showToast(
-                        msg: "Successfully validated",
-                      );
-                    }
-                    Navigator.of(context).pushNamed("/first");
+                    setState(() {
+                      if (isEmailCorrect &&
+                          isPasswordCorrect &&
+                          isNameCorrect) {
+                        buildShowDialog(context);
+                        Navigator.of(context).pushNamed("/first");
+                        Fluttertoast.showToast(
+                          msg: "Successfully validated",
+                        );
+                      }
+                    });
                   },
                   child: const Text(
                     Constants.thirdPageText3,
@@ -308,12 +316,24 @@ class _ThirdPageState extends State<ThirdPage> {
       ),
     );
   }
-  void getImage ({required ImageSource source}) async{
+
+  void getImage({required ImageSource source}) async {
     final file = await ImagePicker().pickImage(source: source);
-    if(file?.path != null){
+    if (file?.path != null) {
       setState(() {
         imageFile = File(file!.path);
       });
     }
+  }
+
+  buildShowDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
   }
 }

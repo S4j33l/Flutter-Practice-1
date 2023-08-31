@@ -59,7 +59,7 @@ class FirstPage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/second");
+                    Navigator.of(context).pushNamed("/fourth");
                     Fluttertoast.showToast(
                       msg: "You're on the second page now!",
                       toastLength: Toast.LENGTH_SHORT,

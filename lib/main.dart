@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:internship_application_1/routes/first_page.dart';
 import 'package:internship_application_1/routes/second_page.dart';
+import 'package:internship_application_1/routes/test.dart';
 import 'package:internship_application_1/routes/third_page.dart';
 
 void main() {
@@ -12,7 +13,8 @@ void main() {
       routes: {
         "/first": (_) => const FirstPage(),
         "/second": (_) => const SecondPage(),
-        "/third":(_) => const ThirdPage(), 
+        "/third": (_) => const ThirdPage(),
+        "/fourth": (_) => const MyApp(),
       },
     ),
   );
