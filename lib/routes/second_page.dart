@@ -48,6 +48,7 @@ class SecondPage extends StatelessWidget {
                   controller: emailController,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
+                      borderSide: BorderSide(style: BorderStyle.solid),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     label: Text(
@@ -64,6 +65,7 @@ class SecondPage extends StatelessWidget {
                   controller: passwordController,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
+                      borderSide: BorderSide(style: BorderStyle.solid),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     label: Text(
@@ -166,32 +168,41 @@ class SecondPage extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: const Text("Forgot Password?"),
+              backgroundColor: Colors.blueGrey,
+              title: Text(
+                "Forgot Password?",
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
               content: SizedBox(
-                height: 171.0,
+                height: 210.0,
                 child: Column(
                   children: <Widget>[
                     const TextField(
                       decoration: InputDecoration(
-                        hintText: "Enter new password...",
+                        hintText: "Enter New Password",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 5.0),
+                    const SizedBox(height: 10.0),
                     const TextField(
                       decoration: InputDecoration(
-                          hintText: "Confirm new password...",
+                          hintText: "Confirm New Password",
                           border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0)),
                           )),
                     ),
+                    const SizedBox(height: 25.0),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: ElevatedButton(
-                          onPressed: () {}, child: const Text("Confirm")),
+                          onPressed: () {},
+                          child: Text(
+                            "Confirm",
+                            style: Theme.of(context).textTheme.displayMedium,
+                          )),
                     )
                   ],
                 ),

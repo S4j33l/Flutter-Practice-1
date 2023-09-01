@@ -21,10 +21,9 @@ void main() {
           displayMedium: const TextStyle(
               fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w600),
           titleMedium: TextStyle(
-            fontSize: 18.0,
-            color: Colors.grey[900],
-            fontWeight: FontWeight.w600
-          ),
+              fontSize: 18.0,
+              color: Colors.grey[900],
+              fontWeight: FontWeight.w600),
         ),
       ),
       debugShowCheckedModeBanner: false,

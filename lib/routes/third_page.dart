@@ -63,12 +63,18 @@ class _ThirdPageState extends State<ThirdPage> {
                 onTap: () => getImage(source: ImageSource.gallery),
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
-                  child: CircleAvatar(
-                    radius: 60.0,
-                    backgroundImage: imageFile != null
-                        ? FileImage(imageFile!)
-                        : const AssetImage("assets/images/default.jpg")
-                            as ImageProvider,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 2.0, color: Colors.deepPurple),
+                      shape: BoxShape.circle,
+                    ),
+                    child: CircleAvatar(
+                      radius: 60.0,
+                      backgroundImage: imageFile != null
+                          ? FileImage(imageFile!)
+                          : const AssetImage("assets/images/default.jpg")
+                              as ImageProvider,
+                    ),
                   ),
                 ),
               ),
@@ -79,6 +85,7 @@ class _ThirdPageState extends State<ThirdPage> {
                   controller: nameController,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
+                      borderSide: BorderSide(style: BorderStyle.solid),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     label: Text(
@@ -95,6 +102,7 @@ class _ThirdPageState extends State<ThirdPage> {
                   controller: emailController,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
+                      borderSide: BorderSide(style: BorderStyle.solid),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     label: Text("Email",
@@ -109,6 +117,7 @@ class _ThirdPageState extends State<ThirdPage> {
                   controller: passwordController,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
+                      borderSide: BorderSide(style: BorderStyle.solid),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     label: Text(
@@ -129,7 +138,7 @@ class _ThirdPageState extends State<ThirdPage> {
                           .displayMedium!
                           .copyWith(fontSize: 24.0)),
                   RadioListTile(
-                    title: const Text("real nigga"),
+                    title: const Text("Male"),
                     value: 0,
                     groupValue: radioButtonValue,
                     onChanged: (value) => setState(() {
@@ -137,7 +146,7 @@ class _ThirdPageState extends State<ThirdPage> {
                     }),
                   ),
                   RadioListTile(
-                    title: const Text("goofy nigga"),
+                    title: const Text("Female"),
                     value: 1,
                     groupValue: radioButtonValue,
                     onChanged: (value) => setState(() {
@@ -256,12 +265,12 @@ class _ThirdPageState extends State<ThirdPage> {
                   ),
                 ],
               ),
-              SizedBox(height: screenHeight / 24),
+              SizedBox(height: screenHeight / 36),
               Center(
                 child: Text(Constants.secondPageText8,
                     style: Theme.of(context).textTheme.displayMedium),
               ),
-              SizedBox(height: screenHeight / 64),
+              SizedBox(height: screenHeight / 56),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
