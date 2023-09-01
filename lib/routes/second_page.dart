@@ -18,55 +18,42 @@ class SecondPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         margin: const EdgeInsets.all(10.0),
-        color: Colors.white,
         child: Center(
           child: ListView(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
               SizedBox(height: screenHeight / 6),
-              const Image(
-                  height: 100.0,
-                  width: 100.0,
-                  image: AssetImage("assets/images/ship's helm.png")),
-              SizedBox(height: screenHeight / 16),
-              const Center(
-                child: Text(
-                  Constants.secondPageText1,
-                  style: TextStyle(
-                    fontFamily: "Barlow",
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                  ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.blueGrey,
+                child: Image.asset(
+                  "assets/images/ship's helm.png",
                 ),
+              ),
+              SizedBox(height: screenHeight / 16),
+              Center(
+                child: Text(Constants.secondPageText1,
+                    style: Theme.of(context).textTheme.titleLarge),
               ),
               SizedBox(height: screenHeight / 56),
-              const Text(
-                Constants.secondPageText2,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: "Barlow",
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
+              Text(Constants.secondPageText2,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.displayMedium),
               SizedBox(height: screenHeight / 24),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
                   controller: emailController,
-                  decoration: const InputDecoration(
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red),
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    label: Text(
+                      "Email",
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
-                    label: Text("Email"),
                   ),
                 ),
               ),
@@ -75,16 +62,14 @@ class SecondPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
                   controller: passwordController,
-                  decoration: const InputDecoration(
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red),
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    label: Text(
+                      "Password",
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
-                    label: Text("Password"),
                   ),
                   obscureText: true,
                 ),
@@ -92,11 +77,14 @@ class SecondPage extends StatelessWidget {
               SizedBox(height: screenHeight / 64),
               GestureDetector(
                 onTap: () => showForgotPasswordDialog(context),
-                child: const Padding(
-                  padding: EdgeInsets.only(right: 20.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Text(Constants.secondPageText3),
+                    child: Text(
+                      Constants.secondPageText3,
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
                   ),
                 ),
               ),
@@ -105,7 +93,6 @@ class SecondPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
                     minimumSize: const Size(350, 40),
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -127,50 +114,31 @@ class SecondPage extends StatelessWidget {
                       Fluttertoast.showToast(msg: "Successfully logged in!");
                     }
                   },
-                  child: const Text(
-                    Constants.secondPageText4,
-                    style: TextStyle(
-                        fontFamily: "Barlow",
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0),
-                  ),
+                  child: Text(Constants.secondPageText4,
+                      style: Theme.of(context).textTheme.displayMedium),
                 ),
               ),
               SizedBox(height: screenHeight / 42),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text(
+                  Text(
                     Constants.secondPageText5,
-                    style: TextStyle(
-                      fontFamily: "Barlow",
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed("/third");
                     },
-                    child: const Text(
-                      Constants.secondPageText7,
-                      style: TextStyle(
-                        fontFamily: "Barlow",
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
+                    child: Text(Constants.secondPageText7,
+                        style: Theme.of(context).textTheme.displayMedium),
                   ),
                 ],
               ),
               SizedBox(height: screenHeight / 36),
-              const Center(
-                child: Text(
-                  Constants.secondPageText8,
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontFamily: "Barlow",
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              Center(
+                child: Text(Constants.secondPageText8,
+                    style: Theme.of(context).textTheme.displayMedium),
               ),
               SizedBox(height: screenHeight / 56),
               const Row(
@@ -198,7 +166,6 @@ class SecondPage extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              backgroundColor: Colors.lightBlue[50],
               title: const Text("Forgot Password?"),
               content: SizedBox(
                 height: 171.0,

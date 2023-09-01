@@ -36,39 +36,28 @@ class _ThirdPageState extends State<ThirdPage> {
     return Scaffold(
       body: Container(
         margin: const EdgeInsets.all(10.0),
-        color: Colors.white,
         child: Center(
           child: ListView(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: false,
             children: <Widget>[
               SizedBox(height: screenHeight / 8),
-              const Image(
-                  height: 50.0,
-                  width: 50.0,
-                  image: AssetImage("assets/images/ship's helm.png")),
-              const Center(
-                child: Text(
-                  Constants.thirdPageText1,
-                  style: TextStyle(
-                    fontFamily: "Barlow",
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                  ),
+              Container(
+                height: 50,
+                width: 50,
+                color: Colors.blueGrey,
+                child: Image.asset(
+                  "assets/images/ship's helm.png",
                 ),
+              ),
+              Center(
+                child: Text(Constants.thirdPageText1,
+                    style: Theme.of(context).textTheme.titleLarge),
               ),
               SizedBox(height: screenHeight / 48),
-              const Text(
-                Constants.thirdPageText2,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: "Barlow",
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
+              Text(Constants.thirdPageText2,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.displayMedium),
               SizedBox(height: screenHeight / 48),
               GestureDetector(
                 onTap: () => getImage(source: ImageSource.gallery),
@@ -88,11 +77,14 @@ class _ThirdPageState extends State<ThirdPage> {
                 padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
                 child: TextField(
                   controller: nameController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
-                    label: Text("Name"),
+                    label: Text(
+                      "Name",
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
                   ),
                 ),
               ),
@@ -101,11 +93,12 @@ class _ThirdPageState extends State<ThirdPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
                   controller: emailController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
-                    label: Text("Email"),
+                    label: Text("Email",
+                        style: Theme.of(context).textTheme.displayMedium),
                   ),
                 ),
               ),
@@ -114,11 +107,14 @@ class _ThirdPageState extends State<ThirdPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
                   controller: passwordController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
-                    label: Text("Password"),
+                    label: Text(
+                      "Password",
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
                   ),
                   obscureText: true,
                 ),
@@ -127,16 +123,13 @@ class _ThirdPageState extends State<ThirdPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(height: screenHeight / 48),
-                  const Text(
-                    "Please select your gender:",
-                    style: TextStyle(
-                      fontFamily: "Barlow",
-                      fontSize: 24.0,
-                    ),
-                  ),
+                  Text("Please select your gender:",
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(fontSize: 24.0)),
                   RadioListTile(
-                    title: const Text("Male"),
-                    activeColor: Colors.black,
+                    title: const Text("real nigga"),
                     value: 0,
                     groupValue: radioButtonValue,
                     onChanged: (value) => setState(() {
@@ -144,21 +137,18 @@ class _ThirdPageState extends State<ThirdPage> {
                     }),
                   ),
                   RadioListTile(
-                    title: const Text("Female"),
-                    activeColor: Colors.black,
+                    title: const Text("goofy nigga"),
                     value: 1,
                     groupValue: radioButtonValue,
                     onChanged: (value) => setState(() {
                       radioButtonValue = value!;
                     }),
                   ),
-                  const Text(
-                    "Please select your favorite recipe:",
-                    style: TextStyle(
-                      fontFamily: "Barlow",
-                      fontSize: 24.0,
-                    ),
-                  ),
+                  Text("Please select your favorite recipe:",
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(fontSize: 24.0)),
                   CheckboxListTile(
                       title: const Text("Biryani"),
                       value: selectedRecipeIsBiryani,
@@ -183,13 +173,11 @@ class _ThirdPageState extends State<ThirdPage> {
                           selectedRecipeIsPulao = value!;
                         });
                       }),
-                  const Text(
-                    "Please select your country:",
-                    style: TextStyle(
-                      fontFamily: "Barlow",
-                      fontSize: 24.0,
-                    ),
-                  ),
+                  Text("Please select your country:",
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(fontSize: 24.0)),
                   DropdownButton<String>(
                       icon: const Icon(Icons.menu),
                       hint: const Text("Select your country"),
@@ -216,7 +204,6 @@ class _ThirdPageState extends State<ThirdPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 17.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
                     minimumSize: const Size(350, 40),
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -250,49 +237,29 @@ class _ThirdPageState extends State<ThirdPage> {
                       }
                     });
                   },
-                  child: const Text(
-                    Constants.thirdPageText3,
-                    style: TextStyle(
-                      fontFamily: "Barlow",
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
-                  ),
+                  child: Text(Constants.thirdPageText3,
+                      style: Theme.of(context).textTheme.displayMedium),
                 ),
               ),
               SizedBox(height: screenHeight / 36),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text(
-                    Constants.secondPageText6,
-                    style: TextStyle(
-                      fontFamily: "Barlow",
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  Text(Constants.secondPageText6,
+                      style: Theme.of(context).textTheme.displayMedium),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed("/second");
                     },
-                    child: const Text(
-                      Constants.thirdPageText4,
-                      style: TextStyle(
-                        fontFamily: "Barlow",
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
+                    child: Text(Constants.thirdPageText4,
+                        style: Theme.of(context).textTheme.displayMedium),
                   ),
                 ],
               ),
               SizedBox(height: screenHeight / 24),
-              const Center(
-                child: Text(
-                  Constants.secondPageText8,
-                  style: TextStyle(
-                    fontFamily: "Barlow",
-                  ),
-                ),
+              Center(
+                child: Text(Constants.secondPageText8,
+                    style: Theme.of(context).textTheme.displayMedium),
               ),
               SizedBox(height: screenHeight / 64),
               const Row(
