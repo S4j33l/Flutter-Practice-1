@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
@@ -227,13 +226,58 @@ class _ThirdPageState extends State<ThirdPage> {
                   SizedBox(height: screenHeight / 56),
                   ElevatedButton(
                       onPressed: () async {
-                        var datePick =
-                            await showCalendarDatePicker2Dialog(
-                              context: context,
-                              value: ,
-                              dialogSize: const Size(100, 100),
-                              config: CalendarDatePicker2WithActionButtonsConfig(),
-                            );
+                        DateTime? datePick = await showDatePicker(
+                            builder: (context, child) => DatePickerTheme(
+                                data: DatePickerThemeData(
+                                  headerBackgroundColor: Colors.black,
+                                  backgroundColor: Colors.white,
+                                  headerHeadlineStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  weekdayStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  dayStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  yearStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  dayBackgroundColor:
+                                      MaterialStateProperty.all<Color?>(
+                                    Colors.white,
+                                  ),
+                                  dayForegroundColor: MaterialStateProperty.all<Color?>(
+                                    Colors.black,
+                                  ),
+                                  dayOverlayColor: MaterialStateProperty.all<Color?>(
+                                      Colors.black
+                                  ),
+                                ),
+                                child: child!),
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1993),
+                            lastDate: DateTime(2024));
+                        if (datePick != null) {
+                          setState(() {
+                            if (datePick.year > 2005) {
+                              showDialog(
+                                  context: context,
+                                  builder: ((context) => AlertDialog(
+                                        backgroundColor: Colors.white,
+                                        title: Text("Your age must be over 18",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium),
+                                        content: Text(
+                                            "Please reselect your age!",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium),
+                                      )));
+                            } else {
+                              selectedDate = datePick;
+                              dateHasBeenSelected = true;
+                            }
+                          });
+                        }
                       },
                       child: Text("Select",
                           style: Theme.of(context).textTheme.displayMedium)),
