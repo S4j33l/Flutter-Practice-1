@@ -17,9 +17,10 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
+  bool dateHasBeenSelected = false;
   bool isLoggedIn = false;
   File? imageFile;
-  int radioButtonValue = -1;
+  int? radioButtonValue = -1;
   bool? selectedRecipeIsBiryani = false;
   bool? selectedRecipeIsNehari = false;
   bool? selectedRecipeIsPulao = false;
@@ -30,6 +31,7 @@ class _ThirdPageState extends State<ThirdPage> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  DateTime? selectedDate;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -42,12 +44,11 @@ class _ThirdPageState extends State<ThirdPage> {
             shrinkWrap: false,
             children: <Widget>[
               SizedBox(height: screenHeight / 8),
-              Container(
+              SizedBox(
                 height: 50,
                 width: 50,
-                color: Colors.blueGrey,
                 child: Image.asset(
-                  "assets/images/ship's helm.png",
+                  "assets/images/ship's helm2.0.png",
                 ),
               ),
               Center(
@@ -141,16 +142,18 @@ class _ThirdPageState extends State<ThirdPage> {
                     title: const Text("Male"),
                     value: 0,
                     groupValue: radioButtonValue,
+                    toggleable: true,
                     onChanged: (value) => setState(() {
-                      radioButtonValue = value!;
+                      radioButtonValue = value;
                     }),
                   ),
                   RadioListTile(
                     title: const Text("Female"),
                     value: 1,
                     groupValue: radioButtonValue,
+                    toggleable: true,
                     onChanged: (value) => setState(() {
-                      radioButtonValue = value!;
+                      radioButtonValue = value;
                     }),
                   ),
                   Text("Please select your favorite recipe:",
@@ -163,7 +166,7 @@ class _ThirdPageState extends State<ThirdPage> {
                       value: selectedRecipeIsBiryani,
                       onChanged: (value) {
                         setState(() {
-                          selectedRecipeIsBiryani = value!;
+                          selectedRecipeIsBiryani = value;
                         });
                       }),
                   CheckboxListTile(
@@ -206,6 +209,74 @@ class _ThirdPageState extends State<ThirdPage> {
                           dropdownValue = value!;
                         });
                       }),
+                  Text(
+                    "Please select your date of birth: ",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 24.0),
+                  ),
+                  SizedBox(height: screenHeight / 56),
+                  Text(
+                    dateHasBeenSelected
+                        ? "${selectedDate?.day} - ${selectedDate?.month} - ${selectedDate?.year}"
+                        : "",
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                  SizedBox(height: screenHeight / 56),
+                  ElevatedButton(
+                      onPressed: () async {
+                        DateTime? datePick = await showDatePicker(
+                            builder: (context, child) => DatePickerTheme(
+                                data: DatePickerThemeData(
+                                  headerBackgroundColor: Colors.blueGrey,
+                                  backgroundColor: Colors.blueGrey,
+                                  headerHeadlineStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  weekdayStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  dayStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  yearStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  dayBackgroundColor:
+                                      MaterialStateProperty.all<Color?>(
+                                    Colors.blueGrey,
+                                  ),
+                                  dayOverlayColor: MaterialStateProperty.all<Color?>(
+                                      Colors.blueGrey),
+                                ),
+                                child: child!),
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1993),
+                            lastDate: DateTime(2024));
+                        if (datePick != null) {
+                          setState(() {
+                            if (datePick.year > 2005) {
+                              showDialog(
+                                  context: context,
+                                  builder: ((context) => AlertDialog(
+                                        backgroundColor: Colors.blueGrey,
+                                        title: Text("Your age must be over 18",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium),
+                                        content: Text(
+                                            "Please reselect your age!",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium),
+                                      )));
+                            } else {
+                              selectedDate = datePick;
+                              dateHasBeenSelected = true;
+                            }
+                          });
+                        }
+                      },
+                      child: Text("Select",
+                          style: Theme.of(context).textTheme.displayMedium)),
                 ],
               ),
               SizedBox(height: screenHeight / 36),

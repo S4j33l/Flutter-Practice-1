@@ -64,6 +64,8 @@ flutter:
     - assets/images/isaacClarkex2.jpg
     - assets/images/isaacClarkex3.jpg
     - assets/images/default.jpg
+    - assets/images/ship's helm2.0.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

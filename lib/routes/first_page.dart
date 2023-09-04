@@ -16,12 +16,11 @@ class FirstPage extends StatelessWidget {
           child: ListView(
             children: <Widget>[
               SizedBox(height: screenHeight / 5),
-              Container(
+              SizedBox(
                 height: 200,
                 width: 200,
-                color: Colors.blueGrey,
                 child: Image.asset(
-                  "assets/images/ship's helm.png",
+                  "assets/images/ship's helm2.0.png",
                 ),
               ),
               SizedBox(height: screenHeight / 24),

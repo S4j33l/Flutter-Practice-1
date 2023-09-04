@@ -9,9 +9,9 @@ void main() {
       home: const LoginScreenExample(),
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
-        scaffoldBackgroundColor: Colors.blueGrey,
+        scaffoldBackgroundColor: Colors.white,
         elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.black54)),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.black38)),
         fontFamily: "Barlow",
         textTheme: TextTheme(
           titleLarge: const TextStyle(
@@ -19,7 +19,7 @@ void main() {
               color: Colors.black54,
               fontWeight: FontWeight.w800),
           displayMedium: const TextStyle(
-              fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w600),
+              fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w600),
           titleMedium: TextStyle(
               fontSize: 18.0,
               color: Colors.grey[900],

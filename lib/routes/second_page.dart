@@ -24,12 +24,11 @@ class SecondPage extends StatelessWidget {
             shrinkWrap: true,
             children: <Widget>[
               SizedBox(height: screenHeight / 6),
-              Container(
+              SizedBox(
                 height: 100,
                 width: 100,
-                color: Colors.blueGrey,
                 child: Image.asset(
-                  "assets/images/ship's helm.png",
+                  "assets/images/ship's helm2.0.png",
                 ),
               ),
               SizedBox(height: screenHeight / 16),
@@ -156,6 +155,9 @@ class SecondPage extends StatelessWidget {
                   ),
                   Icon(CustomIcons.linkedinCircled),
                 ],
+              ),
+              SizedBox(
+                height: screenHeight / 24,
               ),
             ],
           ),
