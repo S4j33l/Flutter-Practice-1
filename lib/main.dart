@@ -11,7 +11,7 @@ void main() {
         primarySwatch: Colors.deepPurple,
         scaffoldBackgroundColor: Colors.white,
         elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.black38)),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.black26)),
         fontFamily: "Barlow",
         textTheme: TextTheme(
           titleLarge: const TextStyle(
