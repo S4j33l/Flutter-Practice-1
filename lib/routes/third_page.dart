@@ -44,11 +44,16 @@ class _ThirdPageState extends State<ThirdPage> {
             shrinkWrap: false,
             children: <Widget>[
               SizedBox(height: screenHeight / 8),
-              SizedBox(
-                height: 50,
-                width: 50,
-                child: Image.asset(
-                  "assets/images/ship's helm2.0.png",
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/fourth");
+                },
+                child: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Image.asset(
+                    "assets/images/ship's helm2.0.png",
+                  ),
                 ),
               ),
               Center(
@@ -243,12 +248,13 @@ class _ThirdPageState extends State<ThirdPage> {
                                       MaterialStateProperty.all<Color?>(
                                     Colors.white,
                                   ),
-                                  dayForegroundColor: MaterialStateProperty.all<Color?>(
+                                  dayForegroundColor:
+                                      MaterialStateProperty.all<Color?>(
                                     Colors.black,
                                   ),
-                                  dayOverlayColor: MaterialStateProperty.all<Color?>(
-                                      Colors.black
-                                  ),
+                                  dayOverlayColor:
+                                      MaterialStateProperty.all<Color?>(
+                                          Colors.black),
                                 ),
                                 child: child!),
                             context: context,
