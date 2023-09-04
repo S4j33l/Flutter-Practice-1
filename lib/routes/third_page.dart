@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:internship_application_1/constants/constants.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
+import 'package:progress_indicators/progress_indicators.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({
@@ -24,6 +25,7 @@ class _ThirdPageState extends State<ThirdPage> {
   bool? selectedRecipeIsBiryani = false;
   bool? selectedRecipeIsNehari = false;
   bool? selectedRecipeIsPulao = false;
+  bool? selectedRecipeIsTikka = false;
   String? dropdownValue;
   bool isEmailCorrect = false;
   bool isPasswordCorrect = false;
@@ -134,160 +136,207 @@ class _ThirdPageState extends State<ThirdPage> {
                   obscureText: true,
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: screenHeight / 48),
-                  Text("Please select your gender:",
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayMedium!
-                          .copyWith(fontSize: 24.0)),
-                  RadioListTile(
-                    title: const Text("Male"),
-                    value: 0,
-                    groupValue: radioButtonValue,
-                    toggleable: true,
-                    onChanged: (value) => setState(() {
-                      radioButtonValue = value;
-                    }),
-                  ),
-                  RadioListTile(
-                    title: const Text("Female"),
-                    value: 1,
-                    groupValue: radioButtonValue,
-                    toggleable: true,
-                    onChanged: (value) => setState(() {
-                      radioButtonValue = value;
-                    }),
-                  ),
-                  Text("Please select your favorite recipe:",
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayMedium!
-                          .copyWith(fontSize: 24.0)),
-                  CheckboxListTile(
-                      title: const Text("Biryani"),
-                      value: selectedRecipeIsBiryani,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedRecipeIsBiryani = value;
-                        });
-                      }),
-                  CheckboxListTile(
-                      title: const Text("Nehari"),
-                      value: selectedRecipeIsNehari,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedRecipeIsNehari = value!;
-                        });
-                      }),
-                  CheckboxListTile(
-                      title: const Text("Pulao"),
-                      value: selectedRecipeIsPulao,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedRecipeIsPulao = value!;
-                        });
-                      }),
-                  Text("Please select your country:",
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayMedium!
-                          .copyWith(fontSize: 24.0)),
-                  DropdownButton<String>(
-                      icon: const Icon(Icons.menu),
-                      hint: const Text("Select your country"),
-                      value: dropdownValue,
-                      items: const [
-                        DropdownMenuItem(
-                            value: "Russia", child: Text("Russia")),
-                        DropdownMenuItem(value: "Spain", child: Text("Spain")),
-                        DropdownMenuItem(value: "Japan", child: Text("Japan")),
-                        DropdownMenuItem(
-                            value: "Indonesia", child: Text("Indonesia")),
-                        DropdownMenuItem(
-                            value: "Turkey", child: Text("Turkey")),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: screenHeight / 48),
+                    Text("Please select your gender:",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(
+                                fontSize: 16.0, fontWeight: FontWeight.bold)),
+                    Row(
+                      children: [
+                        Radio(
+                          value: 0,
+                          groupValue: radioButtonValue,
+                          toggleable: true,
+                          onChanged: (value) => setState(() {
+                            radioButtonValue = value;
+                          }),
+                        ),
+                        Text("Male",
+                            style: Theme.of(context).textTheme.displayMedium),
+                        const SizedBox(width: 30.0),
+                        Radio(
+                          value: 1,
+                          groupValue: radioButtonValue,
+                          toggleable: true,
+                          onChanged: (value) => setState(() {
+                            radioButtonValue = value;
+                          }),
+                        ),
+                        Text("Female",
+                            style: Theme.of(context).textTheme.displayMedium),
                       ],
-                      onChanged: (value) {
-                        setState(() {
-                          dropdownValue = value!;
-                        });
-                      }),
-                  Text(
-                    "Please select your date of birth: ",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayMedium!
-                        .copyWith(fontSize: 24.0),
-                  ),
-                  SizedBox(height: screenHeight / 56),
-                  Text(
-                    dateHasBeenSelected
-                        ? "${selectedDate?.day} - ${selectedDate?.month} - ${selectedDate?.year}"
-                        : "",
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                  SizedBox(height: screenHeight / 56),
-                  ElevatedButton(
-                      onPressed: () async {
-                        DateTime? datePick = await showDatePicker(
-                            builder: (context, child) => DatePickerTheme(
-                                data: DatePickerThemeData(
-                                  headerBackgroundColor: Colors.black,
-                                  backgroundColor: Colors.white,
-                                  headerHeadlineStyle:
-                                      Theme.of(context).textTheme.displayMedium,
-                                  weekdayStyle:
-                                      Theme.of(context).textTheme.displayMedium,
-                                  dayStyle:
-                                      Theme.of(context).textTheme.displayMedium,
-                                  yearStyle:
-                                      Theme.of(context).textTheme.displayMedium,
-                                  dayBackgroundColor:
-                                      MaterialStateProperty.all<Color?>(
-                                    Colors.white,
-                                  ),
-                                  dayForegroundColor:
-                                      MaterialStateProperty.all<Color?>(
-                                    Colors.black,
-                                  ),
-                                  dayOverlayColor:
-                                      MaterialStateProperty.all<Color?>(
-                                          Colors.black),
-                                ),
-                                child: child!),
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1993),
-                            lastDate: DateTime(2024));
-                        if (datePick != null) {
+                    ),
+                    Text("Please select your favorite recipe:",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(
+                                fontSize: 16.0, fontWeight: FontWeight.bold)),
+                    Row(
+                      children: [
+                        Checkbox(
+                            value: selectedRecipeIsBiryani,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedRecipeIsBiryani = value;
+                              });
+                            }),
+                        Text("Biryani",
+                            style: Theme.of(context).textTheme.displayMedium),
+                        Checkbox(
+                            value: selectedRecipeIsPulao,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedRecipeIsPulao = value!;
+                              });
+                            }),
+                        Text("Pulao",
+                            style: Theme.of(context).textTheme.displayMedium),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Checkbox(
+                            value: selectedRecipeIsNehari,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedRecipeIsNehari = value!;
+                              });
+                            }),
+                        Text("Nehari",
+                            style: Theme.of(context).textTheme.displayMedium),
+                        const SizedBox(width: 3.0),
+                        Checkbox(
+                            value: selectedRecipeIsTikka,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedRecipeIsTikka = value;
+                              });
+                            }),
+                        Text("Tikka",
+                            style: Theme.of(context).textTheme.displayMedium),
+                      ],
+                    ),
+                    Text("Please select your country:",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(
+                                fontSize: 16.0, fontWeight: FontWeight.bold)),
+                    DropdownButton<String>(
+                        isExpanded: true,
+                        icon: const Icon(Icons.menu),
+                        hint: const Text("Select your country"),
+                        value: dropdownValue,
+                        items: const [
+                          DropdownMenuItem(
+                              value: "Russia", child: Text("Russia")),
+                          DropdownMenuItem(
+                              value: "Spain", child: Text("Spain")),
+                          DropdownMenuItem(
+                              value: "Japan", child: Text("Japan")),
+                          DropdownMenuItem(
+                              value: "Indonesia", child: Text("Indonesia")),
+                          DropdownMenuItem(
+                              value: "Turkey", child: Text("Turkey")),
+                        ],
+                        onChanged: (value) {
                           setState(() {
-                            if (datePick.year > 2005) {
-                              showDialog(
-                                  context: context,
-                                  builder: ((context) => AlertDialog(
-                                        backgroundColor: Colors.white,
-                                        title: Text("Your age must be over 18",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .displayMedium),
-                                        content: Text(
-                                            "Please reselect your age!",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .displayMedium),
-                                      )));
-                            } else {
-                              selectedDate = datePick;
-                              dateHasBeenSelected = true;
-                            }
+                            dropdownValue = value;
                           });
-                        }
-                      },
-                      child: Text("Select",
-                          style: Theme.of(context).textTheme.displayMedium)),
-                ],
+                        }),
+                    Text(
+                      "Please select your date of birth: ",
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: screenHeight / 56),
+                    Center(
+                      child: Text(
+                        dateHasBeenSelected
+                            ? "${selectedDate?.day} - ${selectedDate?.month} - ${selectedDate?.year}"
+                            : "",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                          onPressed: () async {
+                            DateTime? datePick = await showDatePicker(
+                                builder: (context, child) => DatePickerTheme(
+                                    data: DatePickerThemeData(
+                                      headerBackgroundColor: Colors.black,
+                                      backgroundColor: Colors.white,
+                                      headerHeadlineStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      weekdayStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      dayStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      yearStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      dayBackgroundColor:
+                                          MaterialStateProperty.all<Color?>(
+                                        Colors.white,
+                                      ),
+                                      dayForegroundColor:
+                                          MaterialStateProperty.all<Color?>(
+                                        Colors.black,
+                                      ),
+                                      dayOverlayColor:
+                                          MaterialStateProperty.all<Color?>(
+                                              Colors.black),
+                                    ),
+                                    child: child!),
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1993),
+                                lastDate: DateTime(2024));
+                            if (datePick != null) {
+                              setState(() {
+                                if (datePick.year > 2005) {
+                                  showDialog(
+                                      context: context,
+                                      builder: ((context) => AlertDialog(
+                                            backgroundColor: Colors.white,
+                                            title: Text(
+                                                "Your age must be over 18",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium),
+                                            content: Text(
+                                                "Please reselect your age!",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium),
+                                          )));
+                                } else {
+                                  selectedDate = datePick;
+                                  dateHasBeenSelected = true;
+                                }
+                              });
+                            }
+                          },
+                          child: Text("Select",
+                              style:
+                                  Theme.of(context).textTheme.displayMedium)),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: screenHeight / 36),
               Padding(
@@ -319,8 +368,13 @@ class _ThirdPageState extends State<ThirdPage> {
                       if (isEmailCorrect &&
                           isPasswordCorrect &&
                           isNameCorrect) {
+                        return;
+                      } else {
                         buildShowDialog(context);
-                        Navigator.of(context).pushNamed("/first");
+                        Future.delayed(const Duration(seconds: 3))
+                            .then((value) {
+                          Navigator.of(context).pushNamed("/first");
+                        });
                         Fluttertoast.showToast(
                           msg: "Successfully validated",
                         );
@@ -388,8 +442,14 @@ class _ThirdPageState extends State<ThirdPage> {
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Center(
+            child: JumpingText(
+              "Please Wait...",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontSize: 42.0, color: Colors.white),
+            ),
           );
         });
   }
