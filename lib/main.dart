@@ -11,6 +11,8 @@ void main() {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         scaffoldBackgroundColor: Colors.white,
+        textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(backgroundColor: Colors.black26)),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.black26)),
         fontFamily: "Barlow",

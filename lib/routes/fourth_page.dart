@@ -8,7 +8,7 @@ class FourthPage extends StatefulWidget {
 }
 
 class _FourthPageState extends State<FourthPage> {
-  int bottomNavigationBarIndex = 2;
+  int bottomNavigationBarIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,13 +56,16 @@ class _FourthPageState extends State<FourthPage> {
         ),
       ),
       body: Container(
-        margin: const EdgeInsets.only(left: 12.0),
+        margin: const EdgeInsets.only(
+          top: 12.0,
+          left: 12.0,
+        ),
         child: Column(
           children: <Widget>[
             Row(
               children: <Widget>[
                 ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                   child: Container(
                     height: 180.0,
                     width: 180.0,
@@ -76,7 +79,7 @@ class _FourthPageState extends State<FourthPage> {
                 ),
                 const SizedBox(width: 10.0),
                 ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                   child: Container(
                     height: 180.0,
                     width: 180.0,
@@ -94,7 +97,7 @@ class _FourthPageState extends State<FourthPage> {
             Row(
               children: <Widget>[
                 ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                   child: Container(
                     height: 180.0,
                     width: 180.0,
@@ -108,7 +111,7 @@ class _FourthPageState extends State<FourthPage> {
                 ),
                 const SizedBox(width: 10.0),
                 ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                   child: Container(
                     height: 180.0,
                     width: 180.0,
@@ -122,6 +125,45 @@ class _FourthPageState extends State<FourthPage> {
                 ),
               ],
             ),
+            Row(
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    TextButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                        ),
+                        onPressed: () {},
+                        child: Text("Statistics",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(fontSize: 24.0))),
+                    const SizedBox(height: 20.0),
+                    Text("Name",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(fontSize: 28.0)),
+                    const SizedBox(height: 20.0),
+                    Text("Position",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(fontSize: 28.0)),
+                    const SizedBox(height: 20.0),
+                    Text("Age",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(fontSize: 28.0)),
+                    const SizedBox(height: 20.0),
+                  ],
+                ),
+              ],
+            )
           ],
         ),
       ),

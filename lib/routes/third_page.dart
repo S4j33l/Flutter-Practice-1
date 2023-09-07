@@ -88,7 +88,7 @@ class _ThirdPageState extends State<ThirdPage> {
               ),
               SizedBox(height: screenHeight / 24),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
                   controller: nameController,
                   decoration: InputDecoration(
@@ -194,7 +194,7 @@ class _ThirdPageState extends State<ThirdPage> {
                             value: selectedRecipeIsPulao,
                             onChanged: (value) {
                               setState(() {
-                                selectedRecipeIsPulao = value!;
+                                selectedRecipeIsPulao = value;
                               });
                             }),
                         Text("Pulao",
@@ -207,7 +207,7 @@ class _ThirdPageState extends State<ThirdPage> {
                             value: selectedRecipeIsNehari,
                             onChanged: (value) {
                               setState(() {
-                                selectedRecipeIsNehari = value!;
+                                selectedRecipeIsNehari = value;
                               });
                             }),
                         Text("Nehari",
@@ -230,28 +230,31 @@ class _ThirdPageState extends State<ThirdPage> {
                             .displayMedium!
                             .copyWith(
                                 fontSize: 16.0, fontWeight: FontWeight.bold)),
-                    DropdownButton<String>(
-                        isExpanded: true,
-                        icon: const Icon(Icons.menu),
-                        hint: const Text("Select your country"),
-                        value: dropdownValue,
-                        items: const [
-                          DropdownMenuItem(
-                              value: "Russia", child: Text("Russia")),
-                          DropdownMenuItem(
-                              value: "Spain", child: Text("Spain")),
-                          DropdownMenuItem(
-                              value: "Japan", child: Text("Japan")),
-                          DropdownMenuItem(
-                              value: "Indonesia", child: Text("Indonesia")),
-                          DropdownMenuItem(
-                              value: "Turkey", child: Text("Turkey")),
-                        ],
-                        onChanged: (value) {
-                          setState(() {
-                            dropdownValue = value;
-                          });
-                        }),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          icon: const Icon(Icons.arrow_drop_down_sharp),
+                          hint: const Text("Select your country"),
+                          value: dropdownValue,
+                          items: const [
+                            DropdownMenuItem(
+                                value: "Russia", child: Text("Russia")),
+                            DropdownMenuItem(
+                                value: "Spain", child: Text("Spain")),
+                            DropdownMenuItem(
+                                value: "Japan", child: Text("Japan")),
+                            DropdownMenuItem(
+                                value: "Indonesia", child: Text("Indonesia")),
+                            DropdownMenuItem(
+                                value: "Turkey", child: Text("Turkey")),
+                          ],
+                          onChanged: (value) {
+                            setState(() {
+                              dropdownValue = value;
+                            });
+                          }),
+                    ),
                     Text(
                       "Please select your date of birth: ",
                       style: Theme.of(context)

@@ -4,10 +4,17 @@ import 'package:internship_application_1/constants/constants.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
 
-class SecondPage extends StatelessWidget {
+class SecondPage extends StatefulWidget {
   const SecondPage({
     super.key,
   });
+
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+
+class _SecondPageState extends State<SecondPage> {
+  bool? rememberMe = false;
   @override
   Widget build(BuildContext context) {
     bool isEmailCorrect = false;
@@ -76,18 +83,30 @@ class SecondPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: screenHeight / 64),
-              GestureDetector(
-                onTap: () => showForgotPasswordDialog(context),
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 3.0),
+                    child: Checkbox(
+                        value: rememberMe,
+                        onChanged: (value) {
+                          setState(() {
+                            rememberMe = value;
+                          });
+                        }),
+                  ),
+                  Text("Remember me?",
+                      style: Theme.of(context).textTheme.displayMedium),
+                  const SizedBox(width: 45.0),
+                  GestureDetector(
+                    onTap: () => showForgotPasswordDialog(context),
                     child: Text(
                       Constants.secondPageText3,
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
                   ),
-                ),
+                ],
               ),
               SizedBox(height: screenHeight / 24),
               Padding(
@@ -170,7 +189,7 @@ class SecondPage extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              backgroundColor: Colors.blueGrey,
+              backgroundColor: Colors.white,
               title: Text(
                 "Forgot Password?",
                 style: Theme.of(context).textTheme.displayMedium,
@@ -200,11 +219,12 @@ class SecondPage extends StatelessWidget {
                     Align(
                       alignment: Alignment.bottomRight,
                       child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Confirm",
-                            style: Theme.of(context).textTheme.displayMedium,
-                          )),
+                        onPressed: () {},
+                        child: Text(
+                          "Confirm",
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ),
                     )
                   ],
                 ),
