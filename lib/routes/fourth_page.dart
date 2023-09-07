@@ -24,9 +24,32 @@ class _FourthPageState extends State<FourthPage> {
         child: ListView(
           children: <Widget>[
             DrawerHeader(
-              padding: const EdgeInsets.only(top: 80.0, left: 20.0),
-              child: Text("Navigation Panel",
-                  style: Theme.of(context).textTheme.titleLarge),
+              padding: const EdgeInsets.only(top: 50.0, left: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      const CircleAvatar(
+                        backgroundImage:
+                            AssetImage("assets/images/isaacClarkex4.jpg"),
+                      ),
+                      const SizedBox(width: 10.0),
+                      Text("M.Sajeel",
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(fontSize: 24.0)),
+                    ],
+                  ),
+                  const SizedBox(height: 25.0),
+                  Text("Navigation Panel",
+                      style: Theme.of(context).textTheme.titleLarge),
+                ],
+              ),
+            ),
+            const Divider(
+              thickness: 2.0,
             ),
             ListTile(
               title: Text("Go to 1st page ",
@@ -70,10 +93,14 @@ class _FourthPageState extends State<FourthPage> {
                     height: 180.0,
                     width: 180.0,
                     color: Colors.green,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text("NAME",
-                          style: Theme.of(context).textTheme.displayMedium),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("NAME",
+                            style: Theme.of(context).textTheme.displayMedium),
+                        Text("M.Sajeel",
+                            style: Theme.of(context).textTheme.displayMedium),
+                      ],
                     ),
                   ),
                 ),
@@ -84,10 +111,14 @@ class _FourthPageState extends State<FourthPage> {
                     height: 180.0,
                     width: 180.0,
                     color: Colors.red,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text("DATE OF BIRTH",
-                          style: Theme.of(context).textTheme.displayMedium),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("DATE OF BIRTH",
+                            style: Theme.of(context).textTheme.displayMedium),
+                        Text("4/9/2003",
+                            style: Theme.of(context).textTheme.displayMedium),
+                      ],
                     ),
                   ),
                 ),
@@ -102,10 +133,14 @@ class _FourthPageState extends State<FourthPage> {
                     height: 180.0,
                     width: 180.0,
                     color: Colors.lightBlue[200],
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text("CONTACT",
-                          style: Theme.of(context).textTheme.displayMedium),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("CONTACT",
+                            style: Theme.of(context).textTheme.displayMedium),
+                        Text("12345678910",
+                            style: Theme.of(context).textTheme.displayMedium),
+                      ],
                     ),
                   ),
                 ),
@@ -116,10 +151,14 @@ class _FourthPageState extends State<FourthPage> {
                     height: 180.0,
                     width: 180.0,
                     color: Colors.indigo[300],
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text("EMAIL",
-                          style: Theme.of(context).textTheme.displayMedium),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("EMAIL",
+                            style: Theme.of(context).textTheme.displayMedium),
+                        Text("sajeel321@gmail.com",
+                            style: Theme.of(context).textTheme.displayMedium),
+                      ],
                     ),
                   ),
                 ),
@@ -143,25 +182,24 @@ class _FourthPageState extends State<FourthPage> {
                                   .textTheme
                                   .titleLarge!
                                   .copyWith(fontSize: 24.0))),
-                      const SizedBox(height: 20.0),
-                      Text("Name",
+                      const SizedBox(height: 30.0),
+                      Text("Degree",
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
-                              .copyWith(fontSize: 26.0)),
-                      const SizedBox(height: 20.0),
+                              .copyWith(fontSize: 24.0)),
+                      const SizedBox(height: 30.0),
                       Text("Position",
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
                               .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 20.0),
+                      const SizedBox(height: 30.0),
                       Text("Age",
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
                               .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 20.0),
                     ],
                   ),
                   Column(
@@ -177,25 +215,24 @@ class _FourthPageState extends State<FourthPage> {
                                   .textTheme
                                   .titleLarge!
                                   .copyWith(fontSize: 24.0))),
-                      const SizedBox(height: 20.0),
-                      Text("Muhammad Sajeel",
+                      const SizedBox(height: 30.0),
+                      Text("BS SE",
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
                               .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 20.0),
+                      const SizedBox(height: 30.0),
                       Text("Mobile App Dev Intern",
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
                               .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 20.0),
+                      const SizedBox(height: 30.0),
                       Text("Undefined",
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
                               .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 20.0),
                     ],
                   ),
                 ],
