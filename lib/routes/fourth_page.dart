@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-class FourthPage extends StatelessWidget {
+class FourthPage extends StatefulWidget {
   const FourthPage({super.key});
 
+  @override
+  State<FourthPage> createState() => _FourthPageState();
+}
+
+class _FourthPageState extends State<FourthPage> {
+  int bottomNavigationBarIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +22,7 @@ class FourthPage extends StatelessWidget {
       ),
       drawer: Drawer(
         child: ListView(
-          children: [
+          children: <Widget>[
             DrawerHeader(
               padding: const EdgeInsets.only(top: 80.0, left: 20.0),
               child: Text("Navigation Panel",
@@ -53,13 +59,6 @@ class FourthPage extends StatelessWidget {
         margin: const EdgeInsets.only(left: 12.0),
         child: Column(
           children: <Widget>[
-            Expanded(
-              child: Container(
-                child: Row(
-                  children: <Widget>[],
-                ),
-              )
-              ),
             Row(
               children: <Widget>[
                 ClipRRect(
@@ -122,10 +121,24 @@ class FourthPage extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          onTap: (value) {
+            setState(() {
+              bottomNavigationBarIndex = value;
+            });
+          },
+          currentIndex: bottomNavigationBarIndex,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: "Settings"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          ]),
     );
   }
 }
