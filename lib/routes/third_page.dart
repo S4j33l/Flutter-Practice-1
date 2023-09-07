@@ -354,17 +354,14 @@ class _ThirdPageState extends State<ThirdPage> {
                   onPressed: () {
                     if (InputValidation.nameValidatonToast(
                         nameController.text)) {
-                      print(nameController.text);
                       isNameCorrect = true;
                     }
                     if (InputValidation.emailValidatonToast(
                         emailController.text)) {
-                      print(emailController.text);
                       isEmailCorrect = true;
                     }
                     if (InputValidation.passwordValidatonToast(
                         passwordController.text, isEmailCorrect)) {
-                      print(passwordController.text);
                       isPasswordCorrect = true;
                     }
                     setState(() {

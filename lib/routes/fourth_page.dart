@@ -125,44 +125,81 @@ class _FourthPageState extends State<FourthPage> {
                 ),
               ],
             ),
-            Row(
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                        ),
-                        onPressed: () {},
-                        child: Text("Statistics",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(fontSize: 24.0))),
-                    const SizedBox(height: 20.0),
-                    Text("Name",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium!
-                            .copyWith(fontSize: 28.0)),
-                    const SizedBox(height: 20.0),
-                    Text("Position",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium!
-                            .copyWith(fontSize: 28.0)),
-                    const SizedBox(height: 20.0),
-                    Text("Age",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium!
-                            .copyWith(fontSize: 28.0)),
-                    const SizedBox(height: 20.0),
-                  ],
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      TextButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                          ),
+                          onPressed: () {},
+                          child: Text("Statistics",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(fontSize: 24.0))),
+                      const SizedBox(height: 20.0),
+                      Text("Name",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(fontSize: 26.0)),
+                      const SizedBox(height: 20.0),
+                      Text("Position",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(fontSize: 24.0)),
+                      const SizedBox(height: 20.0),
+                      Text("Age",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(fontSize: 24.0)),
+                      const SizedBox(height: 20.0),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      TextButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                          ),
+                          onPressed: () {},
+                          child: Text("Information",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(fontSize: 24.0))),
+                      const SizedBox(height: 20.0),
+                      Text("Muhammad Sajeel",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(fontSize: 24.0)),
+                      const SizedBox(height: 20.0),
+                      Text("Mobile App Dev Intern",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(fontSize: 24.0)),
+                      const SizedBox(height: 20.0),
+                      Text("Undefined",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(fontSize: 24.0)),
+                      const SizedBox(height: 20.0),
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         ),

@@ -121,12 +121,10 @@ class _SecondPageState extends State<SecondPage> {
                   onPressed: () {
                     if (InputValidation.emailValidatonToast(
                         emailController.text)) {
-                      print(emailController.text);
                       isEmailCorrect = true;
                     }
                     if (InputValidation.passwordValidatonToast(
                         passwordController.text, isEmailCorrect)) {
-                      print(passwordController.text);
                       isPasswordCorrect = true;
                     }
                     if (isEmailCorrect && isPasswordCorrect) {
