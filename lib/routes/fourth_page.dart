@@ -8,11 +8,25 @@ class FourthPage extends StatefulWidget {
 }
 
 class _FourthPageState extends State<FourthPage> {
+  bool isSwitchedToStatistics = false;
+  bool isSwitchedToInformation = false;
   int bottomNavigationBarIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: <Color>[
+                Colors.black38,
+                Colors.orange,
+                Colors.lightBlue,
+              ],
+            ),
+          ),
+        ),
         title: Text("Dashboard",
             style: Theme.of(context)
                 .textTheme
@@ -79,104 +93,111 @@ class _FourthPageState extends State<FourthPage> {
         ),
       ),
       body: Container(
-        margin: const EdgeInsets.only(
-          top: 12.0,
-          left: 12.0,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: <Color>[
+              Colors.black38,
+              Colors.orange,
+              Colors.lightBlue,
+            ],
+          ),
         ),
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                  child: Container(
-                    height: 180.0,
-                    width: 180.0,
-                    color: Colors.green,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("NAME",
-                            style: Theme.of(context).textTheme.displayMedium),
-                        Text("M.Sajeel",
-                            style: Theme.of(context).textTheme.displayMedium),
-                      ],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10.0, left: 12.0),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    child: Container(
+                      height: 180.0,
+                      width: 180.0,
+                      color: Colors.green,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("NAME",
+                              style: Theme.of(context).textTheme.displayMedium),
+                          Text("M.Sajeel",
+                              style: Theme.of(context).textTheme.displayMedium),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 10.0),
-                ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                  child: Container(
-                    height: 180.0,
-                    width: 180.0,
-                    color: Colors.red,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("DATE OF BIRTH",
-                            style: Theme.of(context).textTheme.displayMedium),
-                        Text("4/9/2003",
-                            style: Theme.of(context).textTheme.displayMedium),
-                      ],
+                  const SizedBox(width: 10.0),
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    child: Container(
+                      height: 180.0,
+                      width: 180.0,
+                      color: Colors.red,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("DATE OF BIRTH",
+                              style: Theme.of(context).textTheme.displayMedium),
+                          Text("4/9/2003",
+                              style: Theme.of(context).textTheme.displayMedium),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10.0),
-            Row(
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                  child: Container(
-                    height: 180.0,
-                    width: 180.0,
-                    color: Colors.lightBlue[200],
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("CONTACT",
-                            style: Theme.of(context).textTheme.displayMedium),
-                        Text("12345678910",
-                            style: Theme.of(context).textTheme.displayMedium),
-                      ],
+                ],
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    child: Container(
+                      height: 180.0,
+                      width: 180.0,
+                      color: Colors.lightBlue[200],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("CONTACT",
+                              style: Theme.of(context).textTheme.displayMedium),
+                          Text("12345678910",
+                              style: Theme.of(context).textTheme.displayMedium),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 10.0),
-                ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                  child: Container(
-                    height: 180.0,
-                    width: 180.0,
-                    color: Colors.indigo[300],
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("EMAIL",
-                            style: Theme.of(context).textTheme.displayMedium),
-                        Text("sajeel321@gmail.com",
-                            style: Theme.of(context).textTheme.displayMedium),
-                      ],
+                  const SizedBox(width: 10.0),
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    child: Container(
+                      height: 180.0,
+                      width: 180.0,
+                      color: Colors.indigo[300],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("EMAIL",
+                              style: Theme.of(context).textTheme.displayMedium),
+                          Text("sajeel321@gmail.com",
+                              style: Theme.of(context).textTheme.displayMedium),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Column(
                     children: <Widget>[
                       TextButton(
                           style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.white),
+                                MaterialStateProperty.all(Colors.transparent),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            isSwitchedToStatistics = true;
+                          },
                           child: Text("Statistics",
                               style: Theme.of(context)
                                   .textTheme
@@ -207,7 +228,7 @@ class _FourthPageState extends State<FourthPage> {
                       TextButton(
                           style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.white),
+                                MaterialStateProperty.all(Colors.transparent),
                           ),
                           onPressed: () {},
                           child: Text("Information",
@@ -222,7 +243,7 @@ class _FourthPageState extends State<FourthPage> {
                               .displayMedium!
                               .copyWith(fontSize: 24.0)),
                       const SizedBox(height: 30.0),
-                      Text("Mobile App Dev Intern",
+                      Text("Intern",
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
@@ -236,17 +257,27 @@ class _FourthPageState extends State<FourthPage> {
                     ],
                   ),
                 ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Colors.black38,
+            Colors.orange,
+            Colors.lightBlue,
+          ]),
+        ),
+        child: BottomNavigationBar(
           onTap: (value) {
             setState(() {
               bottomNavigationBarIndex = value;
             });
           },
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
           currentIndex: bottomNavigationBarIndex,
           type: BottomNavigationBarType.fixed,
           items: const [
@@ -254,7 +285,9 @@ class _FourthPageState extends State<FourthPage> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings), label: "Settings"),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-          ]),
+          ],
+        ),
+      ),
     );
   }
 }
