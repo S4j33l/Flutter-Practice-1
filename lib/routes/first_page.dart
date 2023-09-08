@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:internship_application_1/constants/constants.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({
@@ -26,7 +25,7 @@ class FirstPage extends StatelessWidget {
               SizedBox(height: screenHeight / 24),
               Center(
                 child: Text(
-                  Constants.firstPageText1,
+                  "Welcome To",
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
@@ -34,7 +33,7 @@ class FirstPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 65.0),
                 child: Text(
-                  Constants.firstPageText2,
+                  "Create an account and access thousands of cool stuff",
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
@@ -59,7 +58,7 @@ class FirstPage extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    Constants.firstPageText3,
+                    "Get Started",
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                 ),
@@ -68,13 +67,13 @@ class FirstPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(Constants.firstPageText4,
+                  Text("Do you have an account? ",
                       style: Theme.of(context).textTheme.displayMedium),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed("/second");
                     },
-                    child: Text(Constants.firstPageText5,
+                    child: Text("Log in",
                         style: Theme.of(context).textTheme.displayMedium),
                   ),
                 ],

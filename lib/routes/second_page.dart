@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:internship_application_1/constants/constants.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
 
@@ -40,11 +39,11 @@ class _SecondPageState extends State<SecondPage> {
               ),
               SizedBox(height: screenHeight / 16),
               Center(
-                child: Text(Constants.secondPageText1,
+                child: Text("Log in now",
                     style: Theme.of(context).textTheme.titleLarge),
               ),
               SizedBox(height: screenHeight / 56),
-              Text(Constants.secondPageText2,
+              Text("Please login to continue using our app ",
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium),
               SizedBox(height: screenHeight / 24),
@@ -102,7 +101,7 @@ class _SecondPageState extends State<SecondPage> {
                   GestureDetector(
                     onTap: () => showForgotPasswordDialog(context),
                     child: Text(
-                      Constants.secondPageText3,
+                      "Forgot Password?",
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
                   ),
@@ -132,7 +131,7 @@ class _SecondPageState extends State<SecondPage> {
                       Fluttertoast.showToast(msg: "Successfully logged in!");
                     }
                   },
-                  child: Text(Constants.secondPageText4,
+                  child: Text("Log In",
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
               ),
@@ -141,21 +140,21 @@ class _SecondPageState extends State<SecondPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    Constants.secondPageText5,
+                    "Don't have an account? ",
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed("/third");
                     },
-                    child: Text(Constants.secondPageText7,
+                    child: Text("Sign Up",
                         style: Theme.of(context).textTheme.displayMedium),
                   ),
                 ],
               ),
               SizedBox(height: screenHeight / 36),
               Center(
-                child: Text(Constants.secondPageText8,
+                child: Text("Or connect with:",
                     style: Theme.of(context).textTheme.displayMedium),
               ),
               SizedBox(height: screenHeight / 56),

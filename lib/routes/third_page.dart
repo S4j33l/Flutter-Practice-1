@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:internship_application_1/constants/constants.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
 import 'package:progress_indicators/progress_indicators.dart';
@@ -59,11 +58,11 @@ class _ThirdPageState extends State<ThirdPage> {
                 ),
               ),
               Center(
-                child: Text(Constants.thirdPageText1,
+                child: Text("Sign up now",
                     style: Theme.of(context).textTheme.titleLarge),
               ),
               SizedBox(height: screenHeight / 48),
-              Text(Constants.thirdPageText2,
+              Text("Please fill the details and create account",
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium),
               SizedBox(height: screenHeight / 48),
@@ -381,7 +380,7 @@ class _ThirdPageState extends State<ThirdPage> {
                       }
                     });
                   },
-                  child: Text(Constants.thirdPageText3,
+                  child: Text("Sign Up",
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
               ),
@@ -389,20 +388,20 @@ class _ThirdPageState extends State<ThirdPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(Constants.secondPageText6,
+                  Text("Already have an account? ",
                       style: Theme.of(context).textTheme.displayMedium),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed("/second");
                     },
-                    child: Text(Constants.thirdPageText4,
+                    child: Text("Log In",
                         style: Theme.of(context).textTheme.displayMedium),
                   ),
                 ],
               ),
               SizedBox(height: screenHeight / 36),
               Center(
-                child: Text(Constants.secondPageText8,
+                child: Text("Or connect with:",
                     style: Theme.of(context).textTheme.displayMedium),
               ),
               SizedBox(height: screenHeight / 56),
