@@ -8,50 +8,65 @@ class FifthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Orders"),
-        centerTitle: true,
+        title: const Text("My Orders"),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(color: Colors.blue),
+        ),
       ),
       body: ListView.builder(
         itemCount: Orders.orders.length,
         itemBuilder: (context, index) => Container(
-          color: Colors.cyan[800],
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-            child: Card(
-              elevation: 0.0,
-              margin: const EdgeInsets.all(5.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      const Icon(Icons.shopping_bag_rounded),
-                      Column(
-                        children: <Widget>[
-                          Text(Orders.orders[index],
-                              style: Theme.of(context).textTheme.displayMedium),
-                          Text("Price: ${Orders.orderPrices[index]}")
-                        ],
-                      ),
-                      ElevatedButton(
-                          onPressed: () {},
-                          child: Text("Deliver?",
-                              style: Theme.of(context).textTheme.displayMedium)),
-                    ],
-                  ),
-                  const Divider(indent: 35.0, endIndent: 35.0, thickness: 2.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Text(DateTime.now().toString()),
-                      ElevatedButton(
-                          onPressed: () {},
-                          child: Text("Details",
-                              style: Theme.of(context).textTheme.displayMedium)),
-                    ],
-                  )
-                ],
-              ),
+          color: Colors.grey[400],
+          child: Card(
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0))),
+            margin: const EdgeInsets.all(10.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    const SizedBox(width: 20.0),
+                    const Icon(Icons.shopping_bag_rounded),
+                    const SizedBox(width: 20.0),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(Orders.orders[index],
+                            style: Theme.of(context).textTheme.displayMedium),
+                        Text("Price: ${Orders.orderPrices[index]}")
+                      ],
+                    ),
+                    const SizedBox(width: 119.0),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            side: const BorderSide(color: Colors.black),
+                            elevation: 0.0,
+                            backgroundColor: Colors.white,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0)))),
+                        onPressed: () {},
+                        child: Text("Deliver?",
+                            style: Theme.of(context).textTheme.displayMedium)),
+                  ],
+                ),
+                const Divider(indent: 23.0, endIndent: 23.0, thickness: 2.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Text("Date: ${DateTime.now().toString()}"),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0)))),
+                        onPressed: () {},
+                        child: Text("Details",
+                            style: Theme.of(context).textTheme.displayMedium)),
+                  ],
+                )
+              ],
             ),
           ),
         ),
