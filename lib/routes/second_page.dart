@@ -132,7 +132,7 @@ class _SecondPageState extends State<SecondPage> {
                     }
                   },
                   child: Text("Log In",
-                      style: Theme.of(context).textTheme.displayMedium),
+                      style: Theme.of(context).textTheme.displayMedium!.copyWith(color: Colors.white)),
                 ),
               ),
               SizedBox(height: screenHeight / 42),

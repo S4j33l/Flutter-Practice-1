@@ -335,7 +335,7 @@ class _ThirdPageState extends State<ThirdPage> {
                           },
                           child: Text("Select",
                               style:
-                                  Theme.of(context).textTheme.displayMedium)),
+                                  Theme.of(context).textTheme.displayMedium!.copyWith(color: Colors.white))),
                     ),
                   ],
                 ),
@@ -381,7 +381,7 @@ class _ThirdPageState extends State<ThirdPage> {
                     });
                   },
                   child: Text("Sign Up",
-                      style: Theme.of(context).textTheme.displayMedium),
+                      style: Theme.of(context).textTheme.displayMedium!.copyWith(color: Colors.white)),
                 ),
               ),
               SizedBox(height: screenHeight / 36),

@@ -14,7 +14,7 @@ void main() {
         textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(backgroundColor: Colors.black26)),
         elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.black26)),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue)),
         fontFamily: "Barlow",
         textTheme: TextTheme(
           titleLarge: const TextStyle(

@@ -15,24 +15,20 @@ class _FourthPageState extends State<FourthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.0,
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: <Color>[
-                Colors.black38,
-                Colors.orange,
-                Colors.white,
-                Colors.lightBlue,
-              ],
-            ),
-          ),
+          decoration:
+              const BoxDecoration(color: Color.fromRGBO(241, 250, 247, 1)),
         ),
-        title: Text("Dashboard",
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .copyWith(color: Colors.white)),
+        leading: IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new_sharp,
+              color: Colors.black,
+            )),
+        elevation: 0.0,
+        title: Text("Dashboard", style: Theme.of(context).textTheme.titleLarge),
         centerTitle: true,
       ),
       drawer: Drawer(
@@ -94,200 +90,196 @@ class _FourthPageState extends State<FourthPage> {
         ),
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: <Color>[
-              Colors.black38,
-              Colors.orange,
-              Colors.lightBlue,
-            ],
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10.0, left: 12.0),
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                    child: Container(
-                      height: 180.0,
-                      width: 180.0,
-                      color: Colors.green,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("NAME",
-                              style: Theme.of(context).textTheme.displayMedium),
-                          Text("M.Sajeel",
-                              style: Theme.of(context).textTheme.displayMedium),
+        color: const Color.fromRGBO(241, 250, 247, 1),
+        margin: const EdgeInsets.only(bottom: 10.0),
+        padding: const EdgeInsets.all(40.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  child: Container(
+                    height: 140.0,
+                    width: 150.0,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromRGBO(205, 109, 243, 0.8),
+                          Color.fromRGBO(205, 109, 243, 1),
                         ],
                       ),
                     ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("NAME",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
+                        Text("M.Sajeel",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
+                      ],
+                    ),
                   ),
-                  const SizedBox(width: 10.0),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                    child: Container(
-                      height: 180.0,
-                      width: 180.0,
-                      color: Colors.red,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("DATE OF BIRTH",
-                              style: Theme.of(context).textTheme.displayMedium),
-                          Text("4/9/2003",
-                              style: Theme.of(context).textTheme.displayMedium),
+                ),
+                const SizedBox(width: 10.0),
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  child: Container(
+                    height: 140.0,
+                    width: 150.0,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromRGBO(1, 211, 254, 0.8),
+                          Color.fromRGBO(1, 211, 254, 1),
                         ],
                       ),
                     ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("DATE OF BIRTH",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
+                        Text("4/9/2003",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 10.0),
-              Row(
-                children: <Widget>[
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                    child: Container(
-                      height: 180.0,
-                      width: 180.0,
-                      color: Colors.lightBlue[200],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("CONTACT",
-                              style: Theme.of(context).textTheme.displayMedium),
-                          Text("12345678910",
-                              style: Theme.of(context).textTheme.displayMedium),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  child: Container(
+                    height: 140.0,
+                    width: 150.0,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromRGBO(255, 120, 153, 0.8),
+                          Color.fromRGBO(255, 120, 153, 1),
                         ],
                       ),
                     ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("CONTACT",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
+                        Text("12345678910",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
+                      ],
+                    ),
                   ),
-                  const SizedBox(width: 10.0),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                    child: Container(
-                      height: 180.0,
-                      width: 180.0,
-                      color: Colors.indigo[300],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("EMAIL",
-                              style: Theme.of(context).textTheme.displayMedium),
-                          Text("sajeel321@gmail.com",
-                              style: Theme.of(context).textTheme.displayMedium),
+                ),
+                const SizedBox(width: 10.0),
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  child: Container(
+                    height: 140.0,
+                    width: 150.0,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromRGBO(66, 227, 132, 0.8),
+                          Color.fromRGBO(66, 227, 132, 1),
                         ],
                       ),
                     ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("EMAIL",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
+                        Text("sjl@gmail.com",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      TextButton(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.transparent),
-                          ),
-                          onPressed: () {
-                            isSwitchedToStatistics = true;
-                          },
-                          child: Text("Statistics",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(fontSize: 24.0))),
-                      const SizedBox(height: 30.0),
-                      Text("Degree",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 30.0),
-                      Text("Position",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 30.0),
-                      Text("Age",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(fontSize: 24.0)),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      TextButton(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.transparent),
-                          ),
-                          onPressed: () {},
-                          child: Text("Information",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(fontSize: 24.0))),
-                      const SizedBox(height: 30.0),
-                      Text("BS SE",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 30.0),
-                      Text("Intern",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(fontSize: 24.0)),
-                      const SizedBox(height: 30.0),
-                      Text("Undefined",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(fontSize: 24.0)),
-                    ],
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: [
-            Colors.black38,
-            Colors.orange,
-            Colors.lightBlue,
-          ]),
-        ),
-        child: BottomNavigationBar(
-          onTap: (value) {
-            setState(() {
-              bottomNavigationBarIndex = value;
-            });
-          },
-          elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          currentIndex: bottomNavigationBarIndex,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Settings"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+                ),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    TextButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {
+                          isSwitchedToStatistics = true;
+                        },
+                        child: Text("Statistics",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(fontSize: 24.0))),
+                                
+                    TextButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {},
+                        child: Text("Information",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(fontSize: 24.0))),
+                  ],
+                ),
+                
+              ],
+            ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          setState(() {
+            bottomNavigationBarIndex = value;
+          });
+        },
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        currentIndex: bottomNavigationBarIndex,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: "Settings"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+        ],
       ),
     );
   }

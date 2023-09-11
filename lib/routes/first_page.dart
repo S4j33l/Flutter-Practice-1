@@ -59,7 +59,7 @@ class FirstPage extends StatelessWidget {
                   },
                   child: Text(
                     "Get Started",
-                    style: Theme.of(context).textTheme.displayMedium,
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(color: Colors.white),
                   ),
                 ),
               ),
