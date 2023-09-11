@@ -22,6 +22,7 @@ class _FourthPageState extends State<FourthPage> {
               colors: <Color>[
                 Colors.black38,
                 Colors.orange,
+                Colors.white,
                 Colors.lightBlue,
               ],
             ),
