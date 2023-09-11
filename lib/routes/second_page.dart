@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({
@@ -13,7 +14,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  bool? rememberMe = false;
+  bool rememberMe = false;
   @override
   Widget build(BuildContext context) {
     bool isEmailCorrect = false;
@@ -91,7 +92,8 @@ class _SecondPageState extends State<SecondPage> {
                         value: rememberMe,
                         onChanged: (value) {
                           setState(() {
-                            rememberMe = value;
+                            rememberMe = value!;
+                            getRememberMeValue(rememberMe);
                           });
                         }),
                   ),
@@ -130,9 +132,13 @@ class _SecondPageState extends State<SecondPage> {
                       Navigator.of(context).pushNamed("/third");
                       Fluttertoast.showToast(msg: "Successfully logged in!");
                     }
+                    Navigator.of(context).pushNamed("/fourth");
                   },
                   child: Text("Log In",
-                      style: Theme.of(context).textTheme.displayMedium!.copyWith(color: Colors.white)),
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(color: Colors.white)),
                 ),
               ),
               SizedBox(height: screenHeight / 42),
@@ -227,5 +233,10 @@ class _SecondPageState extends State<SecondPage> {
                 ),
               ),
             ));
+  }
+
+  Future<void> getRememberMeValue(bool rememberMeValue) async {
+    var preferences = await SharedPreferences.getInstance();
+    preferences.setBool("rememberMe", rememberMeValue);
   }
 }

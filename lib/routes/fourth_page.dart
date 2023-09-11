@@ -19,14 +19,16 @@ class _FourthPageState extends State<FourthPage> {
           decoration:
               const BoxDecoration(color: Color.fromRGBO(241, 250, 247, 1)),
         ),
-        leading: IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new_sharp,
-              color: Colors.black,
-            )),
+        leading: Builder(
+          builder: (context) => IconButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios_new_sharp,
+                color: Colors.black,
+              )),
+        ),
         elevation: 0.0,
         title: Text("Dashboard", style: Theme.of(context).textTheme.titleLarge),
         centerTitle: true,
@@ -86,6 +88,13 @@ class _FourthPageState extends State<FourthPage> {
                 Navigator.of(context).popAndPushNamed("/third");
               },
             ),
+            ListTile(
+                title: Text("Orders",
+                    style: Theme.of(context).textTheme.displayMedium),
+                leading: const Icon(Icons.alarm_rounded),
+                onTap: () {
+                  Navigator.of(context).popAndPushNamed("/fifth");
+                }),
           ],
         ),
       ),
@@ -226,39 +235,77 @@ class _FourthPageState extends State<FourthPage> {
                 ),
               ],
             ),
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.transparent),
-                        ),
-                        onPressed: () {
-                          isSwitchedToStatistics = true;
-                        },
-                        child: Text("Statistics",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(fontSize: 24.0))),
-                                
-                    TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.transparent),
-                        ),
-                        onPressed: () {},
-                        child: Text("Information",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(fontSize: 24.0))),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    isSwitchedToStatistics = true;
+                  },
+                  child: Text("Statistics",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(fontSize: 26.0)),
                 ),
-                
+                GestureDetector(
+                  onTap: () {
+                    isSwitchedToStatistics = true;
+                  },
+                  child: Text("Information",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(fontSize: 26.0)),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Degree",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 20.0)),
+                Text("BE SE",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 20.0)),
+              ],
+            ),
+            const SizedBox(height: 30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Position",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 20.0)),
+                Text("Mob Dev Intern",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 20.0)),
+              ],
+            ),
+            const SizedBox(height: 30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Age",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 20.0)),
+                Text("Undefined",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 20.0)),
               ],
             ),
           ],
