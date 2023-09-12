@@ -8,13 +8,18 @@ class FifthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("My Orders"),
+        title: Text("My Orders",
+            style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                  color: Colors.white,
+                  fontSize: 24.0,
+                )),
         flexibleSpace: Container(
           decoration: const BoxDecoration(color: Colors.blue),
         ),
       ),
       body: ListView.builder(
         itemCount: Orders.orders.length,
+        physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) => Container(
           color: Colors.grey[400],
           child: Card(
@@ -37,20 +42,20 @@ class FifthPage extends StatelessWidget {
                         Text("Price: ${Orders.orderPrices[index]}")
                       ],
                     ),
-                    const SizedBox(width: 119.0),
+                    const SizedBox(width: 110.0),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             side: const BorderSide(color: Colors.black),
-                            elevation: 0.0,
                             backgroundColor: Colors.white,
                             shape: const RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(30.0)))),
                         onPressed: () {},
-                        child: Text("Deliver?",
+                        child: Text("Delivered",
                             style: Theme.of(context).textTheme.displayMedium)),
                   ],
                 ),
+                const SizedBox(height: 10.0),
                 const Divider(indent: 23.0, endIndent: 23.0, thickness: 2.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -63,14 +68,16 @@ class FifthPage extends StatelessWidget {
                                     BorderRadius.all(Radius.circular(30.0)))),
                         onPressed: () {},
                         child: Text("Details",
-                            style: Theme.of(context).textTheme.displayMedium)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white))),
                   ],
                 )
               ],
             ),
           ),
         ),
-        physics: const BouncingScrollPhysics(),
       ),
     );
   }
