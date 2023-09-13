@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
-import 'package:internship_application_1/helpers/input_validator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class SecondPage extends StatefulWidget {
   const SecondPage({
@@ -17,8 +16,6 @@ class _SecondPageState extends State<SecondPage> {
   bool rememberMe = false;
   @override
   Widget build(BuildContext context) {
-    bool isEmailCorrect = false;
-    bool isPasswordCorrect = false;
     double screenHeight = MediaQuery.of(context).size.height;
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
@@ -119,20 +116,15 @@ class _SecondPageState extends State<SecondPage> {
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                   ),
-                  onPressed: () {
-                    if (InputValidation.emailValidatonToast(
-                        emailController.text)) {
-                      isEmailCorrect = true;
-                    }
-                    if (InputValidation.passwordValidatonToast(
-                        passwordController.text, isEmailCorrect)) {
-                      isPasswordCorrect = true;
-                    }
-                    if (isEmailCorrect && isPasswordCorrect) {
-                      Navigator.of(context).pushNamed("/third");
-                      Fluttertoast.showToast(msg: "Successfully logged in!");
-                    }
-                    Navigator.of(context).pushNamed("/fourth");
+                  onPressed: () async {
+                    showDialog(
+                        context: context,
+                        builder: (context) =>
+                            const Center(child: CircularProgressIndicator()));
+                    await postUsernameAndPassword(
+                        emailController.text, passwordController.text);
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pushNamed("/fourth");
                   },
                   child: Text("Log In",
                       style: Theme.of(context)
@@ -238,5 +230,21 @@ class _SecondPageState extends State<SecondPage> {
   Future<void> getRememberMeValue(bool rememberMeValue) async {
     var preferences = await SharedPreferences.getInstance();
     preferences.setBool("rememberMe", rememberMeValue);
+  }
+
+  Future postUsernameAndPassword(String email, String password) async {
+    try {
+      var response =
+          await http.post(Uri.parse("https://dummyjson.com/auth/login"), body: {
+        "username": email,
+        "password": password,
+      });
+      print("email: $email and password: $password");
+      if (response.statusCode == 200) {
+        print("code is 200");
+      }
+    } catch (e) {
+      throw Exception("Please try again");
+    }
   }
 }
