@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 
-
-
 class SixthPage extends StatelessWidget {
   const SixthPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: const Text('Material App Bar'),
+          title: Text("GET API call",
+              style: Theme.of(context).textTheme.titleLarge),
+          centerTitle: true,
         ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
-    );
+        body: ListView.builder(itemBuilder: (content, index) {}));
   }
 }
