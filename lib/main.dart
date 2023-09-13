@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:internship_application_1/routes/fifth_page.dart';
 import 'package:internship_application_1/routes/first_page.dart';
 import 'package:internship_application_1/routes/second_page.dart';
+import 'package:internship_application_1/routes/sixth_page.dart';
 import 'package:internship_application_1/routes/third_page.dart';
 import 'package:internship_application_1/routes/fourth_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,6 +40,7 @@ void main() {
         "/third": (_) => const ThirdPage(),
         "/fourth": (_) => const FourthPage(),
         "/fifth": (_) => const FifthPage(),
+        "/sixth": (_) => const SixthPage(),
       },
     ),
   );

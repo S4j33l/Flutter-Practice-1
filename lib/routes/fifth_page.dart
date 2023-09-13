@@ -79,6 +79,12 @@ class FifthPage extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed("/sixth");
+        },
+        child: const Icon(Icons.move_down_sharp),
+      ),
     );
   }
 }
