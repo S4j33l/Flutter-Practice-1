@@ -47,6 +47,12 @@ class _SixthPageState extends State<SixthPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
+                          Text("ID: ${dJList[index].id}",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayMedium!
+                                  .copyWith(
+                                      decoration: TextDecoration.underline)),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
