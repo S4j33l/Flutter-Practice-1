@@ -26,7 +26,7 @@ class _SixthPageState extends State<SixthPage> {
         centerTitle: true,
         backgroundColor: const Color.fromRGBO(25, 22, 39, 1),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<List<DummyJson>>(
         future: getDummyjson(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
