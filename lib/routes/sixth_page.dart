@@ -85,6 +85,11 @@ class _SixthPageState extends State<SixthPage> {
           }
         },
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        setState(() {
+          deleteDummyJson("1");
+        });
+      }),
     );
   }
 
@@ -100,6 +105,16 @@ class _SixthPageState extends State<SixthPage> {
       return dJList;
     } else {
       return dJList;
+    }
+  }
+
+  Future<dynamic> deleteDummyJson(String id) async {
+    final response = await http
+        .delete(Uri.parse("https://jsonplaceholder.typicode.com/posts/$id"));
+    var data = jsonDecode(response.body.toString());
+    if (response.statusCode == 200) {
+      print("DELETE request successful");
+      print(data);
     }
   }
 }
