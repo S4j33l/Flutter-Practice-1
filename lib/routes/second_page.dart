@@ -144,9 +144,13 @@ class _SecondPageState extends State<SecondPage> {
                           context: context,
                           builder: (context) =>
                               const Center(child: CircularProgressIndicator()));
-                      await postUsernameAndPassword(
+                      int responseCode = await postUsernameAndPassword(
                           emailController.text, passwordController.text);
-                      Navigator.of(context).pop();
+                      if (responseCode == 200) {
+                        Navigator.of(context).pushNamed("/fourth");
+                      } else {
+                        Navigator.of(context).pop();
+                      }
                     }
                   },
                   child: Text("Log In",
@@ -255,9 +259,10 @@ class _SecondPageState extends State<SecondPage> {
     preferences.setBool("rememberMe", rememberMeValue);
   }
 
-  Future postUsernameAndPassword(String email, String password) async {
+  Future<int> postUsernameAndPassword(String email, String password) async {
+    http.Response response;
     try {
-      var response =
+      response =
           await http.post(Uri.parse("https://dummyjson.com/auth/login"), body: {
         "username": email,
         "password": password,
@@ -268,11 +273,13 @@ class _SecondPageState extends State<SecondPage> {
         print("code is 200");
         print("You are authorized!");
       } else if (response.statusCode == 400) {
+        print("code is 400");
         print("You are unauthorized! Please try again");
       }
     } catch (e) {
       throw Exception("Please try again");
     }
+    return response.statusCode;
   }
 
   Future<bool> checkInternetConnection() async {
