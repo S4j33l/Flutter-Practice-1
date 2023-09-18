@@ -1,3 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/widgets/my_text_field.dart';
@@ -14,12 +17,14 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
+  bool toggleVisibility = true;
   bool rememberMe = false;
+  bool isDeviceConnected = false;
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
     return Scaffold(
       body: Container(
         margin: const EdgeInsets.all(10.0),
@@ -48,7 +53,10 @@ class _SecondPageState extends State<SecondPage> {
               SizedBox(height: screenHeight / 24),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: MyTextField(controller: emailController, label: "Email"),
+                child: MyTextField(
+                    controller: emailController,
+                    label: "Email",
+                    obscured: false),
               ),
               SizedBox(height: screenHeight / 48),
               Padding(
@@ -56,7 +64,17 @@ class _SecondPageState extends State<SecondPage> {
                 child: MyTextField(
                   controller: passwordController,
                   label: "Password",
-                  obscured: true,
+                  obscured: toggleVisibility,
+                  suffixed: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        toggleVisibility = !toggleVisibility;
+                      });
+                    },
+                    icon: Icon(toggleVisibility
+                        ? Icons.visibility_off
+                        : Icons.visibility),
+                  ),
                 ),
               ),
               SizedBox(height: screenHeight / 64),
@@ -97,14 +115,39 @@ class _SecondPageState extends State<SecondPage> {
                     ),
                   ),
                   onPressed: () async {
-                    showDialog(
-                        context: context,
-                        builder: (context) =>
-                            const Center(child: CircularProgressIndicator()));
-                    await postUsernameAndPassword(
-                        emailController.text, passwordController.text);
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pushNamed("/fourth");
+                    bool connected = await checkInternetConnection();
+                    if (!connected) {
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                title: Text("Please connect to the internet!",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(color: Colors.black)),
+                                icon: const Icon(Icons.warning, size: 100.0),
+                                actions: <Widget>[
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("OK",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayMedium),
+                                  ),
+                                ],
+                              ));
+                      return;
+                    } else {
+                      showDialog(
+                          context: context,
+                          builder: (context) =>
+                              const Center(child: CircularProgressIndicator()));
+                      await postUsernameAndPassword(
+                          emailController.text, passwordController.text);
+                      Navigator.of(context).pop();
+                    }
                   },
                   child: Text("Log In",
                       style: Theme.of(context)
@@ -222,11 +265,23 @@ class _SecondPageState extends State<SecondPage> {
       print("email: $email and password: $password");
       print("POST request successful");
       if (response.statusCode == 200) {
-        print("POST request successful");
         print("code is 200");
+        print("You are authorized!");
+      } else if (response.statusCode == 400) {
+        print("You are unauthorized! Please try again");
       }
     } catch (e) {
       throw Exception("Please try again");
     }
+  }
+
+  Future<bool> checkInternetConnection() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      isDeviceConnected = false;
+    } else {
+      isDeviceConnected = true;
+    }
+    return isDeviceConnected;
   }
 }
