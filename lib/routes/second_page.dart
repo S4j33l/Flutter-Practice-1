@@ -220,6 +220,7 @@ class _SecondPageState extends State<SecondPage> {
         "password": password,
       });
       print("email: $email and password: $password");
+      print("POST request successful");
       if (response.statusCode == 200) {
         print("POST request successful");
         print("code is 200");

@@ -37,7 +37,7 @@ class _FourthPageState extends State<FourthPage> {
         child: ListView(
           children: <Widget>[
             DrawerHeader(
-              padding: const EdgeInsets.only(top: 50.0, left: 16.0),
+              padding: const EdgeInsets.only(top: 45.0, left: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

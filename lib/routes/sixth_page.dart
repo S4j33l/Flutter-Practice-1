@@ -93,7 +93,6 @@ class _SixthPageState extends State<SixthPage> {
         },
         child: const Icon(Icons.delete),
       ),
-    );
   }
 
   Future<List<DummyJson>> getDummyjson() async {
@@ -110,7 +109,6 @@ class _SixthPageState extends State<SixthPage> {
       return dJList;
     }
   }
-
   Future<dynamic> deleteDummyjson(int id) async {
     final response = await http
         .delete(Uri.parse("https://jsonplaceholder.typicode.com/posts/$id"));
@@ -118,9 +116,6 @@ class _SixthPageState extends State<SixthPage> {
     if (response.statusCode == 200) {
       print("DELETE request successful");
       print(data);
-      return dJList.removeAt(id);
-    } else {
-      throw Exception("Failed");
     }
   }
 }
