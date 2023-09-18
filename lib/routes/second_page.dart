@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
+import 'package:internship_application_1/widgets/my_text_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -47,36 +48,15 @@ class _SecondPageState extends State<SecondPage> {
               SizedBox(height: screenHeight / 24),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(style: BorderStyle.solid),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    label: Text(
-                      "Email",
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ),
-                ),
+                child: MyTextField(controller: emailController, label: "Email"),
               ),
               SizedBox(height: screenHeight / 48),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: TextField(
+                child: MyTextField(
                   controller: passwordController,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(style: BorderStyle.solid),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    label: Text(
-                      "Password",
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ),
-                  obscureText: true,
+                  label: "Password",
+                  obscured: true,
                 ),
               ),
               SizedBox(height: screenHeight / 64),
@@ -123,8 +103,8 @@ class _SecondPageState extends State<SecondPage> {
                             const Center(child: CircularProgressIndicator()));
                     await postUsernameAndPassword(
                         emailController.text, passwordController.text);
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pushNamed("/fourth");
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pushNamed("/fourth");
                   },
                   child: Text("Log In",
                       style: Theme.of(context)
@@ -241,6 +221,7 @@ class _SecondPageState extends State<SecondPage> {
       });
       print("email: $email and password: $password");
       if (response.statusCode == 200) {
+        print("POST request successful");
         print("code is 200");
       }
     } catch (e) {

@@ -29,9 +29,9 @@ class _SixthPageState extends State<SixthPage> {
       body: FutureBuilder<List<DummyJson>>(
         future: getDummyjson(),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.connectionState == ConnectionState.done) {
             return ListView.builder(
-                itemCount: dJList.length,
+                itemCount: 10,
                 itemBuilder: (content, index) {
                   return Container(
                     color: const Color.fromRGBO(25, 22, 39, 1),
@@ -72,7 +72,7 @@ class _SixthPageState extends State<SixthPage> {
                               style: Theme.of(content)
                                   .textTheme
                                   .displayMedium!
-                                  .copyWith(fontSize: 16.0),
+                                  .copyWith(fontSize: 10.0),
                             ),
                           ),
                         ],
@@ -85,13 +85,21 @@ class _SixthPageState extends State<SixthPage> {
           }
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            deleteDummyjson(dJList[0].userId);
+          });
+        },
+        child: const Icon(Icons.delete),
+      ),
     );
   }
 
   Future<List<DummyJson>> getDummyjson() async {
     final response =
         await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
-    var data = jsonDecode(response.body.toString());
+    var data = jsonDecode(response.body);
     if (response.statusCode == 200) {
       print("GET request successful");
       for (Map<String, dynamic> index in data) {
@@ -100,6 +108,19 @@ class _SixthPageState extends State<SixthPage> {
       return dJList;
     } else {
       return dJList;
+    }
+  }
+
+  Future<dynamic> deleteDummyjson(int id) async {
+    final response = await http
+        .delete(Uri.parse("https://jsonplaceholder.typicode.com/posts/$id"));
+    var data = jsonDecode(response.body.toString());
+    if (response.statusCode == 200) {
+      print("DELETE request successful");
+      print(data);
+      return dJList.removeAt(id);
+    } else {
+      throw Exception("Failed");
     }
   }
 }

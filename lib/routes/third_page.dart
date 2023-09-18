@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
 import 'package:internship_application_1/helpers/input_validator.dart';
+import 'package:internship_application_1/widgets/my_text_field.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
 class ThirdPage extends StatefulWidget {
@@ -88,52 +89,20 @@ class _ThirdPageState extends State<ThirdPage> {
               SizedBox(height: screenHeight / 24),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(style: BorderStyle.solid),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    label: Text(
-                      "Name",
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ),
-                ),
+                child: MyTextField(controller: nameController, label: "Name"),
               ),
               SizedBox(height: screenHeight / 64),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(style: BorderStyle.solid),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    label: Text("Email",
-                        style: Theme.of(context).textTheme.displayMedium),
-                  ),
-                ),
+                child: MyTextField(controller: emailController, label: "Email"),
               ),
               SizedBox(height: screenHeight / 64),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: TextField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(style: BorderStyle.solid),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    label: Text(
-                      "Password",
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ),
-                  obscureText: true,
-                ),
+                child: MyTextField(
+                    controller: passwordController,
+                    label: "Password",
+                    obscured: true),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0),
@@ -334,8 +303,10 @@ class _ThirdPageState extends State<ThirdPage> {
                             }
                           },
                           child: Text("Select",
-                              style:
-                                  Theme.of(context).textTheme.displayMedium!.copyWith(color: Colors.white))),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayMedium!
+                                  .copyWith(color: Colors.white))),
                     ),
                   ],
                 ),
@@ -381,7 +352,10 @@ class _ThirdPageState extends State<ThirdPage> {
                     });
                   },
                   child: Text("Sign Up",
-                      style: Theme.of(context).textTheme.displayMedium!.copyWith(color: Colors.white)),
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(color: Colors.white)),
                 ),
               ),
               SizedBox(height: screenHeight / 36),
