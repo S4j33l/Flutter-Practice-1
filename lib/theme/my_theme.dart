@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData myProjectTheme = ThemeData(
-  primarySwatch: Colors.deepPurple,
+  primarySwatch: Colors.lightBlue,
   scaffoldBackgroundColor: Colors.white,
   textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.black26)),

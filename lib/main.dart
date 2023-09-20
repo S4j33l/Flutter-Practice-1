@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:internship_application_1/routes/fifth_page.dart';
 import 'package:internship_application_1/routes/first_page.dart';
 import 'package:internship_application_1/routes/second_page.dart';
@@ -9,6 +10,9 @@ import 'package:internship_application_1/theme/my_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Color.fromRGBO(94, 200, 248, 1),
+  ));
   runApp(
     MaterialApp(
       home: const InternshipProject(),
@@ -49,13 +53,15 @@ class _InternshipProjectState extends State<InternshipProject> {
   void rememberMeChecker() async {
     var preferences = await SharedPreferences.getInstance();
     bool? isLoggedIn = preferences.getBool("rememberMe");
-    if (isLoggedIn == null) {
+    if (isLoggedIn == null && context.mounted) {
       Navigator.pushReplacementNamed(context, "/first");
     } else {
-      if (isLoggedIn == true) {
+      if (isLoggedIn == true && context.mounted) {
         Navigator.pushReplacementNamed(context, "/fourth");
       } else {
-        Navigator.pushReplacementNamed(context, "/first");
+        if (context.mounted) {
+          Navigator.pushReplacementNamed(context, "/first");
+        }
       }
     }
     await preferences.clear();

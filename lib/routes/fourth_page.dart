@@ -25,7 +25,7 @@ class _FourthPageState extends State<FourthPage> {
                 Scaffold.of(context).openDrawer();
               },
               icon: const Icon(
-                Icons.arrow_back_ios_new_sharp,
+                Icons.menu,
                 color: Colors.black,
               )),
         ),

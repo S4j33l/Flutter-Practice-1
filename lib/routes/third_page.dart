@@ -246,7 +246,7 @@ class _ThirdPageState extends State<ThirdPage> {
                             DateTime? datePick = await showDatePicker(
                                 builder: (context, child) => DatePickerTheme(
                                     data: DatePickerThemeData(
-                                      headerBackgroundColor: Colors.black,
+                                      headerBackgroundColor: Colors.white,
                                       backgroundColor: Colors.white,
                                       headerHeadlineStyle: Theme.of(context)
                                           .textTheme
@@ -270,7 +270,7 @@ class _ThirdPageState extends State<ThirdPage> {
                                       ),
                                       dayOverlayColor:
                                           MaterialStateProperty.all<Color?>(
-                                              Colors.black),
+                                              Colors.blue),
                                     ),
                                     child: child!),
                                 context: context,

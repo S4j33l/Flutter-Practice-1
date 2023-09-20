@@ -88,7 +88,7 @@ class _SixthPageState extends State<SixthPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            deleteDummyjson(dJList[0].userId);
+            deleteDummyjson(dJList[0].id);
           });
         },
         child: const Icon(Icons.delete),
@@ -115,9 +115,11 @@ class _SixthPageState extends State<SixthPage> {
     final response = await http
         .delete(Uri.parse("https://jsonplaceholder.typicode.com/posts/$id"));
     var data = jsonDecode(response.body.toString());
+    dJList.removeAt(id);
     if (response.statusCode == 200) {
       print("DELETE request successful");
       print(data);
     }
+    return dJList;
   }
 }
