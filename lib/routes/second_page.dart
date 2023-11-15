@@ -265,14 +265,8 @@ class _SecondPageState extends State<SecondPage> {
         "username": email,
         "password": password,
       });
-      print("email: $email and password: $password");
-      print("POST request successful");
       if (response.statusCode == 200) {
-        print("code is 200");
-        print("You are authorized!");
       } else if (response.statusCode == 400) {
-        print("code is 400");
-        print("You are unauthorized! Please try again");
       }
     } catch (e) {
       throw Exception("Please try again");

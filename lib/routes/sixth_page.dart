@@ -101,7 +101,6 @@ class _SixthPageState extends State<SixthPage> {
         await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
     var data = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      print("GET request successful");
       for (Map<String, dynamic> index in data) {
         dJList.add(DummyJson.fromJson(index));
       }
@@ -114,11 +113,8 @@ class _SixthPageState extends State<SixthPage> {
   Future<dynamic> deleteDummyjson(int id) async {
     final response = await http
         .delete(Uri.parse("https://jsonplaceholder.typicode.com/posts/$id"));
-    var data = jsonDecode(response.body.toString());
     dJList.removeAt(id);
     if (response.statusCode == 200) {
-      print("DELETE request successful");
-      print(data);
     }
     return dJList;
   }
