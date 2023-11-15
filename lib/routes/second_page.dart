@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:internship_application_1/customicons/custom_icons.dart';
@@ -116,7 +114,7 @@ class _SecondPageState extends State<SecondPage> {
                   ),
                   onPressed: () async {
                     bool connected = await checkInternetConnection();
-                    if (!connected) {
+                    if (!connected && context.mounted) {
                       showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
@@ -146,7 +144,7 @@ class _SecondPageState extends State<SecondPage> {
                               const Center(child: CircularProgressIndicator()));
                       int responseCode = await postUsernameAndPassword(
                           emailController.text, passwordController.text);
-                      if (responseCode == 200) {
+                      if (responseCode == 200 && context.mounted) {
                         Navigator.of(context).pushNamed("/fourth");
                       } else {
                         Navigator.of(context).pop();
